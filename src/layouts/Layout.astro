@@ -17,9 +17,12 @@ const resolvedImageWithDomain = new URL(
 
 const { title } = Astro.props;
 
+const baseTitle = `${
+  import.meta.env.PUBLIC_SITE_NAME
+} - Personalized education for the 21st century`;
 const makeTitle = title
-  ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+  ? title + " | " + import.meta.env.PUBLIC_SITE_NAME
+  : baseTitle;
 ---
 
 <!DOCTYPE html>
@@ -27,24 +30,25 @@ const makeTitle = title
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="GroundedTutor is a platform for rediscovering the beauty of personalized education"
       canonical={canonicalURL}
       twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
+        creator: "@GroundedTutor",
+        site: Astro.site,
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: baseTitle,
           image: resolvedImageWithDomain,
         },
         image: {
