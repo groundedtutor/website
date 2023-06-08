@@ -4,8 +4,10 @@ import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
+// https://docs.astro.build/en/reference/configuration-reference/
 export default defineConfig({
   site: "https://groundedtutor.online",
+  compressHTML: true,
   integrations: [
     tailwind(),
     image({
