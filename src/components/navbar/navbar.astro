@@ -32,6 +32,8 @@ const menuitems = [
     path: "/contact",
   },
 ];
+
+const signupEnabled = import.meta.env.PUBLIC_ENABLE_SIGNUP === "true";
 ---
 
 <Container>
@@ -39,8 +41,8 @@ const menuitems = [
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
         <a href="/" class="text-lg"
-          ><span class="font-bold text-slate-800">Astro</span><span
-            class="text-slate-500">ship</span
+          ><span class="font-bold text-slate-800">Grounded</span><span
+            class="text-slate-500">Tutor</span
           >
         </a>
         <div class="block lg:hidden">
@@ -53,15 +55,17 @@ const menuitems = [
             menuitems.map((item, index) => (
               <>
                 {item.children && (
-                  <Dropdown
-                    title={item.title}
-                    children={item.children}
-                    lastItem={index === menuitems.length - 1}
-                  />
+                  <li class="pointer-events-none cursor-default">
+                    <Dropdown
+                      title={item.title}
+                      children={item.children}
+                      lastItem={index === menuitems.length - 1}
+                    />
+                  </li>
                 )}
 
                 {!item.children && (
-                  <li>
+                  <li class="pointer-events-none cursor-default">
                     <a
                       href={item.path}
                       class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900">
@@ -79,7 +83,7 @@ const menuitems = [
         </div>
       </MenuItems>
     </Astronav>
-    <div>
+    <div class:list={[{ hidden: !signupEnabled }]}>
       <div class="hidden lg:flex items-center gap-4">
         <a href="#">Log in</a>
         <Link href="#" size="md">Sign up</Link>
