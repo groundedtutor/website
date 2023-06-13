@@ -12,6 +12,7 @@ export default defineConfig({
     tailwind(),
     image({
       serviceEntryPoint: "@astrojs/image/sharp",
+      logLevel: import.meta.env.DEV ? "debug" : "info",
     }),
     mdx(),
     sitemap(),
