@@ -1,4 +1,7 @@
 root = true
+[*.json]
+indent_size = 2
+
 [*.{astro,jsx,tsx}]
 indent_style = space
 indent_size = 2

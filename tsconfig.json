@@ -4,6 +4,7 @@
     "strictNullChecks": true,
     "verbatimModuleSyntax": true,
     "ignoreDeprecations": "5.0",
+    "lib": ["dom"],
     "baseUrl": "src",
     "paths": {
       "@lib/*": [
@@ -24,6 +25,11 @@
       "@pages/*": [
         "pages/*"
       ],
-    }
+      "@store/*": [
+        "store/*"
+      ],
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   }
 }
