@@ -23,7 +23,7 @@ jobs:
       - name: Load the .env file
         run: echo "$DOTENV_FILE" > .env
         env:
-          DOTENV_FILE: ${{ secrets.DOTENV_FILE }}
+          DOTENV_FILE: ${{ secrets.DOTENV_FILE_CONTENT }}
       - name: Install, build, and upload your site
         uses: withastro/action@v0
         with:
