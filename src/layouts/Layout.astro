@@ -1,11 +1,14 @@
 ---
 import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
-import Navbar from "@components/navbar/navbar.astro";
-import "@fontsource/inter/variable.css";
+import Navbar from "@components/navbar";
+import "@fontsource-variable/inter";
 
 export interface Props {
   title: string;
+  hideMenu?: boolean;
+  hideTitle?: boolean;
+  hideFooter?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -15,14 +18,10 @@ const resolvedImageWithDomain = new URL(
   Astro.site
 ).toString();
 
-const { title } = Astro.props;
+// TODO: Unhide menu when ready
+const { title: pageTitle, hideMenu = true, hideTitle, hideFooter } = Astro.props;
 
-const baseTitle = `${
-  import.meta.env.PUBLIC_SITE_NAME
-} - Personalized education for the 21st century`;
-const makeTitle = title
-  ? title + " | " + import.meta.env.PUBLIC_SITE_NAME
-  : baseTitle;
+const title = `${pageTitle} | ${import.meta.env.PUBLIC_SITE_NAME}`;
 ---
 
 <!DOCTYPE html>
@@ -36,31 +35,31 @@ const makeTitle = title
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
-      title={makeTitle}
+      title={title}
       description="GroundedTutor is a platform for rediscovering the beauty of personalized education"
       canonical={canonicalURL}
       twitter={{
         creator: "@GroundedTutor",
-        site: Astro.site,
+        site: Astro.site?.toString(),
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: baseTitle,
+          title: title,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: "GroundedTutor Homepage Screenshot",
         },
       }}
     />
   </head>
   <body>
-    <Navbar />
+    <Navbar hideMenu={hideMenu} hideTitle={hideTitle} />
     <slot />
-    <Footer />
+    {!hideFooter && <Footer />}
     <style is:global>
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */

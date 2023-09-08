@@ -24,16 +24,17 @@ import { Icon } from "astro-icon";
       Personalized education for the 21st century
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      GroundedTutor is a platform designed to provide education which is personalized to one's learning objective,
-      without compromising on quality.<wbr /> We believe that providing students and professionals alike with access
-      to domain experts, will enable them to make the best use of the time spent learning any subject.
+      GroundedTutor is a platform designed to provide education which is
+      personalized to one's learning objective, without compromising on quality.<wbr
+      /> We believe that providing students and professionals alike with access to
+      domain experts, will enable them to make the best use of the time spent learning
+      any subject.
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
-        href="#"
-        target="_blank"
+        href={import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING}
         class="flex gap-1 items-center justify-center"
-        rel="noopener">
+        target="_blank">
         <Icon class="text-white w-5 h-5" name="uis:schedule" />
         &nbsp;Book a session
       </Link>
