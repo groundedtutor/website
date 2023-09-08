@@ -1,0 +1,31 @@
+---
+import Container from "@components/container.astro";
+import { Checkout, Modal } from "@components/react";
+import Layout from "@layouts/Layout.astro";
+import {Debug} from 'astro/components'
+
+interface Props {
+  clientSecret: string;
+}
+
+const { clientSecret } = Astro.props;
+if (!clientSecret) {
+  Astro.redirect("/pricing");
+}
+---
+
+<Layout title="Payment" hideMenu hideFooter>
+  <Container>
+    <Modal client:idle>
+      <Checkout clientSecret={clientSecret} client:idle client:only="preact" />
+    </Modal>
+    <Debug clientSecret={`${clientSecret}`} />
+  </Container>
+</Layout>
+
+<script>
+  import { loadStripe } from "@stripe/stripe-js/pure";
+  import { $stripeInstance } from "@store/stripe";
+  const stripe = await loadStripe(import.meta.env.PUBLIC_STRIPE_PUB_KEY);
+  $stripeInstance.set(stripe);
+</script>
