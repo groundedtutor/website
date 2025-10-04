@@ -1,18 +1,139 @@
 ---
-import Container from "@components/container.astro";
-import Cta from "@components/cta.astro";
-import Features from "@components/features.astro";
-import Footer from "@components/footer.astro";
-import Hero from "@components/hero.astro";
-import Logos from "@components/logos.astro";
 import Layout from "@layouts/Layout.astro";
+import { Picture } from "astro:assets";
+import heroImage from "assets/hero.png";
+import Link from "@components/ui/link.astro";
+import { CalendarPlus2Icon } from "@lucide/astro";
+import { CodeXmlIcon, HeartHandshakeIcon, UsersIcon } from "@lucide/astro";
+import {
+    SiX as Twitter,
+    SiInstagram as Instagram,
+    SiTiktok as Tiktok,
+    SiGithub as Github,
+    SiYoutube as Youtube,
+    SiFacebook as Facebook,
+} from "@icons-pack/react-simple-icons";
+
+const socialLinkIcons = {
+    "https://www.facebook.com/groundedtutor/": Facebook,
+    "https://x.com/groundedtutor": Twitter,
+    "https://www.instagram.com/groundedtutor": Instagram,
+    "https://www.tiktok.com/@groundedtutor#": Tiktok,
+    "https://github.com/groundedtutor": Github,
+    "https://www.youtube.com/@groundedtutor/": Youtube,
+};
+
+const features = [
+    {
+        title: "Programming",
+        description:
+            "From beginner to experts, we provide you with the necessary guidelines to gain a solid foundation in the world of computer programming",
+        icon: CodeXmlIcon,
+    },
+    {
+        title: "Contracting",
+        description:
+            "GroundedTutor can be contracted to analyze and design complete backend solutions for any software needs",
+        icon: HeartHandshakeIcon,
+    },
+    {
+        title: "Community",
+        description:
+            "The GroundedTutor community is open to all. Join us to discover a community of like-minded individuals who are willing to share their knowledge and expertise.",
+        icon: UsersIcon,
+    },
+];
 ---
 
 <Layout title="Personalized education for the 21st century">
-  <Container>
-    <Hero />
-    <Features />
-    <Logos />
-    <Cta />
-  </Container>
+    <main class="mx-auto max-w-screen-xl space-y-8 px-5 md:space-y-24">
+        <div class="grid place-items-center pt-16 md:pt-12 lg:grid-cols-2">
+            <div class="hidden py-6 md:order-1 md:block">
+                <Picture
+                    src={heroImage}
+                    alt="Groundhog pointing to blackboard containing code"
+                    widths={[200, 400, 600]}
+                    class="grayscale filter"
+                    sizes="(max-width: 800px) 100vw, 620px"
+                    loading="eager"
+                    format="avif"
+                />
+            </div>
+            <div>
+                <h1
+                    class="text-5xl font-bold lg:text-6xl lg:tracking-tight xl:text-7xl xl:tracking-tighter"
+                >
+                    Personalized education for the 21st century
+                </h1>
+                <p class="mt-4 max-w-xl text-lg text-slate-600">
+                    GroundedTutor is a platform designed to provide education which is personalized to
+                    one's learning objective, without compromising on quality.<wbr /> We believe that providing
+                    students and professionals alike with access to dodiv experts, will enable them to
+                    make the best use of the time spent learning any subject.
+                </p>
+                <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+                    <Link
+                        href={import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING}
+                        class="flex items-center justify-center gap-1"
+                        target="_blank"
+                    >
+                        <CalendarPlus2Icon class="size-5 text-white" />
+                        &nbsp;Book a session
+                    </Link>
+                </div>
+            </div>
+        </div>
+        <div class="space-y-4">
+            <h2 class="text-4xl font-bold lg:text-5xl lg:tracking-tight">Experts for every topic</h2>
+            <p class="text-lg text-slate-600">
+                Our team of experts provide the domain knowledge necessary to navigate tough subjects.
+            </p>
+            <div class="grid gap-16 pt-4 sm:grid-cols-2 md:grid-cols-3">
+                {
+                    features.map((item) => (
+                        <div class="flex items-start gap-4">
+                            <div class="flex size-8 items-center justify-between rounded-full bg-black p-2">
+                                <item.icon class="text-white" />
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">{item.title}</h3>{" "}
+                                <p class="mt-2 leading-relaxed text-slate-500">{item.description}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+        <div>
+            <h2 class="text-center text-3xl font-bold lg:text-4xl lg:tracking-tight">
+                Find us online
+            </h2>
+            <div class="mt-10 flex flex-wrap items-center justify-center gap-8 md:gap-20">
+                {
+                    Object.entries(socialLinkIcons).map(([url, Icon]) => (
+                        <a href={url} target="_blank" rel="noopener">
+                            <Icon class:list="size-8 transition-all delay-75 ease-in-out md:size-12 md:hover:scale-110" />
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+        <div
+            class="mx-auto mt-20 flex max-w-5xl flex-col items-center rounded-lg bg-black p-8 text-center md:px-20 md:py-20"
+        >
+            <h2 class="text-4xl tracking-tight text-white md:text-6xl">
+                Discover your learning path
+            </h2>
+            <p class="mt-4 text-lg text-slate-400 md:text-xl">
+                Book a session and embark on a new learning experience
+            </p>
+            <div class="mt-5 flex">
+                <Link
+                    href={import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING}
+                    target="_blank"
+                    style="inverted">Book Now</Link
+                >
+            </div>
+        </div>
+    </main>
 </Layout>
