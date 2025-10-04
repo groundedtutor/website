@@ -1,71 +1,97 @@
 ---
 import { SEO } from "astro-seo";
-import Footer from "@components/footer.astro";
-import Navbar from "@components/navbar";
-import "@fontsource-variable/inter";
+import Navbar from "@components/astro/navbar";
+import "../styles/global.css";
 
 export interface Props {
-  title: string;
-  hideMenu?: boolean;
-  hideTitle?: boolean;
-  hideFooter?: boolean;
+    title: string;
+    hideMenu?: boolean;
+    hideTitle?: boolean;
+    hideFooter?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
-const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
-  Astro.site
-).toString();
+const resolvedImageWithDomain = new URL("/opengraph.jpg", Astro.site).toString();
 
 // TODO: Unhide menu when ready
 const { title: pageTitle, hideMenu = true, hideTitle, hideFooter } = Astro.props;
-
-const title = `${pageTitle} | ${import.meta.env.PUBLIC_SITE_NAME}`;
+const title = `${import.meta.env.PUBLIC_SITE_NAME} | ${pageTitle}`;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
 
-    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
-    <SEO
-      title={title}
-      description="GroundedTutor is a platform for rediscovering the beauty of personalized education"
-      canonical={canonicalURL}
-      twitter={{
-        creator: "@GroundedTutor",
-        site: Astro.site?.toString(),
-        card: "summary_large_image",
-      }}
-      openGraph={{
-        basic: {
-          url: canonicalURL,
-          type: "website",
-          title: title,
-          image: resolvedImageWithDomain,
-        },
-        image: {
-          alt: "GroundedTutor Homepage Screenshot",
-        },
-      }}
-    />
-  </head>
-  <body>
-    <Navbar hideMenu={hideMenu} hideTitle={hideTitle} />
-    <slot />
-    {!hideFooter && <Footer />}
-    <style is:global>
-      /* Improve Page speed */
-      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
-      img {
-        content-visibility: auto;
-      }
-    </style>
-  </body>
+        <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+        <SEO
+            title={title}
+            description="GroundedTutor is a platform for rediscovering the beauty of personalized education"
+            canonical={canonicalURL}
+            twitter={{
+                creator: "@GroundedTutor",
+                site: Astro.site?.toString(),
+                card: "summary_large_image",
+            }}
+            openGraph={{
+                basic: {
+                    url: canonicalURL,
+                    type: "website",
+                    title: title,
+                    image: resolvedImageWithDomain,
+                },
+                image: {
+                    alt: "GroundedTutor Homepage Screenshot",
+                },
+            }}
+        />
+    </head>
+    <body>
+        <main class="mx-auto max-w-screen-xl px-5">
+            <slot name="nav">
+                <header>
+                    <Navbar hideMenu={hideMenu} hideTitle={hideTitle} />
+                </header>
+            </slot>
+            <slot />
+        </main>
+        {
+            !hideFooter && (
+                <footer class="my-20">
+                    <p class="text-center text-sm text-slate-500">
+                        Copyright © {new Date().getFullYear()} GroundedTutor. All rights reserved.
+                    </p>
+                    {/*
+                    Can we ask you a favor 🙏
+                    Please keep this backlink on your website if possible.
+                    or Purchase a commercial license from https://web3templates.com
+                     */}
+                    <p class="mt-1 text-center text-xs text-slate-500">
+                        Made by{" "}
+                        <a
+                            href="https://web3templates.com"
+                            target="_blank"
+                            rel="noopener"
+                            class="hover:underline"
+                        >
+                            Web3Templates
+                        </a>
+                    </p>
+                </footer>
+            )
+        }
+
+        <style is:global>
+            /* Improve Page speed */
+            /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+            img {
+                content-visibility: auto;
+            }
+        </style>
+    </body>
 </html>

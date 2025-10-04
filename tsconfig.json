@@ -1,35 +1,32 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "strictNullChecks": true,
-    "verbatimModuleSyntax": true,
-    "ignoreDeprecations": "5.0",
-    "lib": ["dom"],
-    "baseUrl": "src",
-    "paths": {
-      "@lib/*": [
-        "lib/*"
-      ],
-      "@utils/*": [
-        "utils/*"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@layouts/*": [
-        "layouts/*"
-      ],
-      "@assets/*": [
-        "assets/*"
-      ],
-      "@pages/*": [
-        "pages/*"
-      ],
-      "@store/*": [
-        "store/*"
-      ],
-    },
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
-  }
+   "extends": "astro/tsconfigs/strict",
+   "compilerOptions": {
+      "strictNullChecks": true,
+      "verbatimModuleSyntax": true,
+      "ignoreDeprecations": "5.0",
+      "lib": ["dom"],
+      "baseUrl": "src",
+      "paths": {
+         "@lib/*": ["lib/*"],
+         "@utils/*": ["utils/*"],
+         "@components/*": ["components/*"],
+         "@layouts/*": ["layouts/*"],
+         "@assets/*": ["assets/*"],
+         "@pages/*": ["pages/*"],
+         "@store/*": ["store/*"]
+      },
+      "jsx": "react-jsx",
+      "jsxImportSource": "react",
+      "plugins": [
+         {
+            "name": "@astrojs/ts-plugin"
+         }
+      ]
+   },
+   "references": [
+      {
+         "path": "./tsconfig.node.json"
+      }
+   ],
+   "exclude": ["astro.config.ts"]
 }

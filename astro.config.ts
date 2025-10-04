@@ -1,24 +1,17 @@
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import preact from "@astrojs/preact";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://groundedtutor.online",
-  compressHTML: true,
-  integrations: [
-    tailwind(),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-      logLevel: import.meta.env.DEV ? "debug" : "info",
-    }),
-    mdx(),
-    sitemap(),
-    preact({
-      compat: true,
-    }),
-  ],
+    site: "https://groundedtutor.online",
+    compressHTML: true,
+
+    integrations: [mdx(), sitemap(), react()],
+
+    vite: {
+        plugins: [tailwindcss()],
+    },
 });

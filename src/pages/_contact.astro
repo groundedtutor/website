@@ -1,45 +1,40 @@
 ---
-import { Icon } from "astro-icon";
+import { MailIcon, PhoneIcon, MapPinIcon } from "@lucide/astro";
 import Layout from "@layouts/Layout.astro";
-import Container from "@components/container.astro";
-import Sectionhead from "@components/sectionhead.astro";
-import Contactform from "@components/contactform.astro";
+import Sectionhead from "@components/astro/sectionhead.astro";
+import Contactform from "@components/astro/contactform.astro";
 ---
 
 <Layout title="Contact">
-  <Container>
     <Sectionhead>
-      <Fragment slot="title">Contact</Fragment>
-      <Fragment slot="desc">We are a here to help.</Fragment>
+        <Fragment slot="title">Contact</Fragment>
+        <Fragment slot="desc">We are a here to help.</Fragment>
     </Sectionhead>
 
-    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
-      <div>
-        <h2 class="font-medium text-2xl text-gray-800">
-          Contact GroundedTutor
-        </h2>
-        <p class="text-lg leading-relaxed text-slate-500 mt-3">
-          Have something to say? We are here to help. Fill up the form or send
-          email or call phone.
-        </p>
-        <div class="mt-5">
-          <div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:map-marker" />
-            <span>Saskatoon, Sk</span>
-          </div><div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:envelope" /><a
-              href="mailto:hello@groundedtutor.com">hello@groundedtutor.com</a
-            >
-          </div><div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:phone" /><a
-              href="tel:+1 (987) 4587 899">+1 (987) 4587 899</a
-            >
-          </div>
+    <div class="mx-auto mt-16 grid max-w-4xl gap-10 md:grid-cols-2">
+        <div>
+            <h2 class="text-2xl font-medium text-gray-800">Contact GroundedTutor</h2>
+            <p class="mt-3 text-lg leading-relaxed text-slate-500">
+                Have something to say? We are here to help. Fill up the form or send email or call
+                phone.
+            </p>
+            <div class="mt-5">
+                <div class="mt-2 flex items-center space-x-2 text-gray-600">
+                    <MapPinIcon class="size-4 text-gray-400" />
+                    <span>Saskatoon, Sk</span>
+                </div><div class="mt-2 flex items-center space-x-2 text-gray-600">
+                    <MailIcon class="size-4 text-gray-400" /><a href="mailto:hello@groundedtutor.com"
+                        >hello@groundedtutor.com</a
+                    >
+                </div><div class="mt-2 flex items-center space-x-2 text-gray-600">
+                    <PhoneIcon class="size-4 text-gray-400" /><a href="tel:+1 (987) 4587 899"
+                        >+1 (987) 4587 899</a
+                    >
+                </div>
+            </div>
         </div>
-      </div>
-      <div>
-        <Contactform />
-      </div>
+        <div>
+            <Contactform />
+        </div>
     </div>
-  </Container>
 </Layout>

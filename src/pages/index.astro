@@ -1,8 +1,8 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { Picture } from "astro:assets";
-import heroImage from "assets/hero.png";
-import Link from "@components/ui/link.astro";
+import heroImage from "@assets/hero.png";
+import Link from "@components/astro/link.astro";
 import { CalendarPlus2Icon } from "@lucide/astro";
 import { CodeXmlIcon, HeartHandshakeIcon, UsersIcon } from "@lucide/astro";
 import {
@@ -46,7 +46,7 @@ const features = [
 ---
 
 <Layout title="Personalized education for the 21st century">
-    <main class="mx-auto max-w-screen-xl space-y-8 px-5 md:space-y-24">
+    <div class="mx-auto max-w-screen-xl space-y-8 px-5 md:space-y-24">
         <div class="grid place-items-center pt-16 md:pt-12 lg:grid-cols-2">
             <div class="hidden py-6 md:order-1 md:block">
                 <Picture
@@ -112,7 +112,7 @@ const features = [
                 {
                     Object.entries(socialLinkIcons).map(([url, Icon]) => (
                         <a href={url} target="_blank" rel="noopener">
-                            <Icon class:list="size-8 transition-all delay-75 ease-in-out md:size-12 md:hover:scale-110" />
+                            <Icon className="size-8 transition-all delay-75 ease-in-out md:size-12 md:hover:scale-110" />
                         </a>
                     ))
                 }
@@ -135,5 +135,5 @@ const features = [
                 >
             </div>
         </div>
-    </main>
+    </div>
 </Layout>

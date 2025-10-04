@@ -1,7 +1,15 @@
 root = true
-[*.json]
-indent_size = 2
 
-[*.{astro,jsx,tsx}]
+[*]
+end_of_line = lf
+insert_final_newline = true
 indent_style = space
+indent_size = 4
+charset = utf-8
+max_line_length = 102
+
+[*.{json,yml}]
+indent_size = 3
+
+[*.html]
 indent_size = 2
