@@ -1,26 +1,19 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { Picture } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import heroImage from "@assets/hero.png";
 import Link from "@components/astro/link.astro";
 import { CalendarPlus2Icon } from "@lucide/astro";
 import { CodeXmlIcon, HeartHandshakeIcon, UsersIcon } from "@lucide/astro";
-import {
-    SiX as Twitter,
-    SiInstagram as Instagram,
-    SiTiktok as Tiktok,
-    SiGithub as Github,
-    SiYoutube as Youtube,
-    SiFacebook as Facebook,
-} from "@icons-pack/react-simple-icons";
 
 const socialLinkIcons = {
-    "https://www.facebook.com/groundedtutor/": Facebook,
-    "https://x.com/groundedtutor": Twitter,
-    "https://www.instagram.com/groundedtutor": Instagram,
-    "https://www.tiktok.com/@groundedtutor#": Tiktok,
-    "https://github.com/groundedtutor": Github,
-    "https://www.youtube.com/@groundedtutor/": Youtube,
+    "https://www.facebook.com/groundedtutor/": "simple-icons:facebook",
+    "https://x.com/groundedtutor": "simple-icons:x",
+    "https://www.instagram.com/groundedtutor": "simple-icons:instagram",
+    "https://www.tiktok.com/@groundedtutor#": "simple-icons:tiktok",
+    "https://github.com/groundedtutor": "simple-icons:github",
+    "https://www.youtube.com/@groundedtutor/": "simple-icons:youtube",
 };
 
 const features = [
@@ -46,7 +39,7 @@ const features = [
 ---
 
 <Layout title="Personalized education for the 21st century">
-    <div class="mx-auto max-w-screen-xl space-y-8 px-5 md:space-y-24">
+    <div class="mx-auto max-w-7xl space-y-8 px-5 md:space-y-24">
         <div class="grid place-items-center pt-16 md:pt-12 lg:grid-cols-2">
             <div class="hidden py-6 md:order-1 md:block">
                 <Picture
@@ -68,8 +61,8 @@ const features = [
                 <p class="mt-4 max-w-xl text-lg text-slate-600">
                     GroundedTutor is a platform designed to provide education which is personalized to
                     one's learning objective, without compromising on quality.<wbr /> We believe that providing
-                    students and professionals alike with access to dodiv experts, will enable them to
-                    make the best use of the time spent learning any subject.
+                    students and professionals alike with access to dodiv experts, will enable them to make
+                    the best use of the time spent learning any subject.
                 </p>
                 <div class="mt-6 flex flex-col gap-3 sm:flex-row">
                     <Link
@@ -110,9 +103,12 @@ const features = [
             </h2>
             <div class="mt-10 flex flex-wrap items-center justify-center gap-8 md:gap-20">
                 {
-                    Object.entries(socialLinkIcons).map(([url, Icon]) => (
+                    Object.entries(socialLinkIcons).map(([url, iconName]) => (
                         <a href={url} target="_blank" rel="noopener">
-                            <Icon className="size-8 transition-all delay-75 ease-in-out md:size-12 md:hover:scale-110" />
+                            <Icon
+                                name={iconName}
+                                class="size-8 transition-all delay-75 ease-in-out md:size-12 md:hover:scale-110"
+                            />
                         </a>
                     ))
                 }

@@ -5,15 +5,14 @@
       "verbatimModuleSyntax": true,
       "ignoreDeprecations": "5.0",
       "lib": ["dom"],
-      "baseUrl": "src",
       "paths": {
-         "@lib/*": ["lib/*"],
-         "@utils/*": ["utils/*"],
-         "@components/*": ["components/*"],
-         "@layouts/*": ["layouts/*"],
-         "@assets/*": ["assets/*"],
-         "@pages/*": ["pages/*"],
-         "@store/*": ["store/*"]
+         "@lib/*": ["./src/lib/*"],
+         "@utils/*": ["./src/utils/*"],
+         "@components/*": ["./src/components/*"],
+         "@layouts/*": ["./src/layouts/*"],
+         "@assets/*": ["./src/assets/*"],
+         "@pages/*": ["./src/pages/*"],
+         "@store/*": ["./src/store/*"]
       },
       "jsx": "react-jsx",
       "jsxImportSource": "react",

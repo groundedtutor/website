@@ -1,5 +1,5 @@
 ---
-import { SEO } from "astro-seo";
+import { SEOMetadata } from "astro-seo-metadata";
 import Navbar from "@components/astro/navbar";
 import "../styles/global.css";
 
@@ -24,35 +24,21 @@ const title = `${import.meta.env.PUBLIC_SITE_NAME} | ${pageTitle}`;
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="sitemap" href="/sitemap-index.xml" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-
-        <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
-        <SEO
+        <SEOMetadata
+            siteName={import.meta.env.PUBLIC_SITE_NAME}
             title={title}
             description="GroundedTutor is a platform for rediscovering the beauty of personalized education"
-            canonical={canonicalURL}
-            twitter={{
-                creator: "@GroundedTutor",
-                site: Astro.site?.toString(),
-                card: "summary_large_image",
-            }}
-            openGraph={{
-                basic: {
-                    url: canonicalURL,
-                    type: "website",
-                    title: title,
-                    image: resolvedImageWithDomain,
-                },
-                image: {
-                    alt: "GroundedTutor Homepage Screenshot",
-                },
-            }}
+            image={resolvedImageWithDomain}
+            favicon="/favicon.svg"
+            author="GroundedTutor"
+            astroSitemap={true}
+            canonicalUrl={canonicalURL}
+            type="website"
+            astroGenerator={true}
         />
     </head>
     <body>
-        <main class="mx-auto max-w-screen-xl px-5">
+        <main class="mx-auto max-w-7xl px-5">
             <slot name="nav">
                 <header>
                     <Navbar hideMenu={hideMenu} hideTitle={hideTitle} />
