@@ -1,0 +1,19 @@
+{
+    "name": "@groundedtutor/ui",
+    "version": "0.0.1",
+    "private": true,
+    "type": "module",
+    "exports": {
+        "./button": "./src/astro/button.astro",
+        "./contactform": "./src/astro/contactform.astro",
+        "./link": "./src/astro/link.astro",
+        "./sectionhead": "./src/astro/sectionhead.astro",
+        "./navbar": "./src/astro/navbar/index.ts"
+    },
+    "peerDependencies": {
+        "astro": "^7.0.0"
+    },
+    "dependencies": {
+        "astro-navbar": "^2.4.0"
+    }
+}
