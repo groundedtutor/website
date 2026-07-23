@@ -1,0 +1,42 @@
+---
+import { SEOMetadata } from "astro-seo-metadata";
+import "../styles/global.css";
+
+export interface Props {
+    title: string;
+    description?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const resolvedImageWithDomain = new URL("/opengraph.jpg", Astro.site).toString();
+const {
+    title: pageTitle,
+    description = "Patient, plain-English tech support for older adults in Montreal. In-home visits, phone support, and online help for computers, phones, tablets, and more.",
+} = Astro.props;
+const fullTitle = `${pageTitle} | ${import.meta.env.PUBLIC_SITE_NAME}`;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <SEOMetadata
+            siteName={import.meta.env.PUBLIC_SITE_NAME}
+            title={fullTitle}
+            description={description}
+            image={resolvedImageWithDomain}
+            favicon="/favicon.svg"
+            author={import.meta.env.PUBLIC_SITE_NAME}
+            astroSitemap={true}
+            canonicalUrl={canonicalURL}
+            type="website"
+            astroGenerator={true}
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>

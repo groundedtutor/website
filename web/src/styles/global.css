@@ -1,3 +1,105 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
+
+@theme {
+    --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    --font-serif: "Lora", Georgia, "Times New Roman", serif;
+
+    --color-brown-50: #fbf7f2;
+    --color-brown-100: #f2e6d9;
+    --color-brown-200: #e0c9b0;
+    --color-brown-300: #c9a882;
+    --color-brown-400: #ae8358;
+    --color-brown-500: #96663d;
+    --color-brown-600: #7c5130;
+    --color-brown-700: #633e23;
+    --color-brown-800: #4b2d17;
+    --color-brown-900: #321e0e;
+    --color-brown-950: #1c1008;
+
+    --color-caramel-100: #fdecd8;
+    --color-caramel-200: #f7d2a8;
+    --color-caramel-300: #edaf6b;
+    --color-caramel-400: #d98b40;
+    --color-caramel-500: #b86e28;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-brown-50);
+    color: var(--color-brown-950);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scroll-reveal animations ── */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+.reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+.reveal-delay-5 {
+    transition-delay: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* ── Sticky nav state ── */
+#site-nav {
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.35s ease;
+}
+
+#site-nav.nav-scrolled {
+    background-color: rgba(251, 247, 242, 0.97);
+    box-shadow: 0 1px 24px rgba(28, 16, 8, 0.08);
+    backdrop-filter: blur(8px);
+}
+
+#site-nav.nav-hidden {
+    transform: translateY(-100%);
+}
+
+img {
+    content-visibility: auto;
+}
