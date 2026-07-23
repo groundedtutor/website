@@ -142,6 +142,14 @@ const bookingSteps = [
     },
 ];
 
+const revealDelays = [
+    "reveal-delay-1",
+    "reveal-delay-2",
+    "reveal-delay-3",
+    "reveal-delay-4",
+    "reveal-delay-5",
+];
+
 const decisionItems = [
     { quote: "My computer is slow.", service: "Friendly Tech Help Session", anchor: "#tech-help" },
     {
@@ -474,7 +482,7 @@ const decisionItems = [
                         services.map((s, i) => (
                             <div
                                 id={s.id}
-                                class={`reveal reveal-delay-${i + 1} bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-brown-100`}
+                                class={`reveal ${revealDelays[i] ?? ""} bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-brown-100`}
                             >
                                 <div class={`h-1.5 ${s.accentClass}`} />
                                 <div class="p-7 md:p-8">
@@ -675,7 +683,7 @@ const decisionItems = [
                 <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
                     {
                         bookingSteps.map((step, i) => (
-                            <div class={`reveal reveal-delay-${i + 1}`}>
+                            <div class={`reveal ${revealDelays[i] ?? ""}`}>
                                 <div class="flex lg:flex-col items-start lg:items-center gap-5 lg:text-center">
                                     <div class="flex-shrink-0 w-14 h-14 rounded-full bg-brown-700 text-white text-xl font-bold flex items-center justify-center shadow-sm">
                                         {step.number}
@@ -872,7 +880,7 @@ const decisionItems = [
                             },
                         ].map((item, i) => (
                             <div
-                                class={`reveal reveal-delay-${(i % 3) + 1} bg-brown-800 rounded-2xl p-6`}
+                                class={`reveal ${revealDelays[i % 3] ?? ""} bg-brown-800 rounded-2xl p-6`}
                             >
                                 <div class="w-10 h-10 rounded-xl bg-brown-700 flex items-center justify-center text-caramel-300 mb-4">
                                     <item.icon class="size-5" />
@@ -914,7 +922,7 @@ const decisionItems = [
                         decisionItems.map((item, i) => (
                             <a
                                 href={item.anchor}
-                                class={`reveal reveal-delay-${i + 1} flex items-center justify-between gap-4 bg-white border border-brown-200 hover:border-brown-400 hover:bg-brown-50 rounded-xl px-6 py-5 group transition-all`}
+                                class={`reveal ${revealDelays[i] ?? ""} flex items-center justify-between gap-4 bg-white border border-brown-200 hover:border-brown-400 hover:bg-brown-50 rounded-xl px-6 py-5 group transition-all`}
                             >
                                 <div class="flex items-start gap-4">
                                     <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brown-100 flex items-center justify-center text-brown-700 text-sm font-bold group-hover:bg-brown-200 transition-colors">
