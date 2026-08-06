@@ -1,6 +1,7 @@
 ---
 import { SEOMetadata } from "astro-seo-metadata";
 import "../styles/global.css";
+import {PUBLIC_SITE_NAME} from 'astro:env/client';
 
 export interface Props {
     title: string;
@@ -13,7 +14,7 @@ const {
     title: pageTitle,
     description = "Patient, plain-English tech support for older adults in Montreal. In-home visits, phone support, and online help for computers, phones, tablets, and more.",
 } = Astro.props;
-const fullTitle = `${pageTitle} | ${import.meta.env.PUBLIC_SITE_NAME}`;
+const fullTitle = `${pageTitle} | ${PUBLIC_SITE_NAME}`;
 ---
 
 <!doctype html>
@@ -22,12 +23,12 @@ const fullTitle = `${pageTitle} | ${import.meta.env.PUBLIC_SITE_NAME}`;
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <SEOMetadata
-            siteName={import.meta.env.PUBLIC_SITE_NAME}
+            siteName={PUBLIC_SITE_NAME}
             title={fullTitle}
             description={description}
             image={resolvedImageWithDomain}
             favicon="/favicon.svg"
-            author={import.meta.env.PUBLIC_SITE_NAME}
+            author={PUBLIC_SITE_NAME}
             astroSitemap={true}
             canonicalUrl={canonicalURL}
             type="website"
