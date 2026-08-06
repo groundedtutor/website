@@ -1,7 +1,6 @@
 trailingComma: "es5"
 singleQuote: false
-editorconfig: true
-tailwindStylesheet: "./src/styles/global.css"
+tailwindStylesheet: "./web/src/styles/global.css"
 importOrderSideEffects: false
 # importOrder: ["^@(.*)/.*$", "^[./]", "^@/lib/(.*)$", "^[./]"]
 plugins:

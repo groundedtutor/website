@@ -1,135 +1,1212 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import { Picture } from "astro:assets";
-import { Icon } from "astro-icon/components";
-import heroImage from "@assets/hero.png";
-import Link from "@groundedtutor/ui/link";
-import { CalendarPlus2Icon } from "@lucide/astro";
-import { CodeXmlIcon, HeartHandshakeIcon, UsersIcon } from "@lucide/astro";
+import MarketingLayout from "@layouts/MarketingLayout.astro";
+import {
+    LaptopIcon,
+    SmartphoneIcon,
+    ShieldCheckIcon,
+    FolderOpenIcon,
+    HeartHandshakeIcon,
+    MapPinIcon,
+    CircleCheck,
+    PhoneIcon,
+    HouseIcon,
+    StarIcon,
+    MailIcon,
+    CalendarCheckIcon,
+    ChevronRightIcon,
+    LockIcon,
+    UserCheckIcon,
+    CircleQuestionMarkIcon,
+    RefreshCwIcon,
+    MonitorIcon,
+    ArrowRightIcon,
+} from "@lucide/astro";
 
-const socialLinkIcons = {
-    "https://www.facebook.com/groundedtutor/": "simple-icons:facebook",
-    "https://x.com/groundedtutor": "simple-icons:x",
-    "https://www.instagram.com/groundedtutor": "simple-icons:instagram",
-    "https://www.tiktok.com/@groundedtutor#": "simple-icons:tiktok",
-    "https://github.com/groundedtutor": "simple-icons:github",
-    "https://www.youtube.com/@groundedtutor/": "simple-icons:youtube",
-};
+import { PUBLIC_SITE_PHONE, PUBLIC_CONTACT_EMAIL } from "astro:env/client";
 
-const features = [
+const formattedPhone = PUBLIC_SITE_PHONE.replace(
+    /(?:\+1)?(?<areaCode>\d{3})(?<part1>\d{3})(?<part2>\d{4})/g,
+    (_, areaCode: string, part1: string, part2: string) => `(${areaCode}) ${part1}-${part2}`
+);
+
+const bookingUrl = import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING || "#contact";
+
+const services = [
     {
-        title: "Programming",
+        id: "tech-help",
+        icon: LaptopIcon,
+        accentClass: "bg-brown-700",
+        title: "Friendly Tech Help Session",
+        remote: "$79",
+        inHome: "$129",
         description:
-            "From beginner to experts, we provide you with the necessary guidelines to gain a solid foundation in the world of computer programming",
-        icon: CodeXmlIcon,
+            "Get help with a specific tech problem, an everyday question, or just build your confidence with technology — at your own pace.",
+        examples: [
+            "Slow computer, phone, or tablet",
+            "Email problems",
+            "Printer & Wi-Fi issues",
+            "Video calls with family, doctors, or appointments",
+            "Help using an app or website",
+            "General technology questions",
+        ],
+        goodFor: "First-time support, troubleshooting, building confidence",
+        note: null,
     },
     {
-        title: "Contracting",
+        id: "device-setup",
+        icon: SmartphoneIcon,
+        accentClass: "bg-brown-500",
+        title: "New Device Setup",
+        remote: "$99",
+        inHome: "$149",
         description:
-            "GroundedTutor can be contracted to analyze and design complete backend solutions for any software needs",
+            "Just got a new phone, tablet, computer, or smart device? We'll set it up properly so it works the way you need it to.",
+        examples: [
+            "Basic setup, updates, and account sign-in",
+            "Email, contacts, and apps",
+            "Transferring contacts, photos, or files where possible",
+            "Printer, Wi-Fi, and Bluetooth setup",
+            "Larger text, voice controls & accessibility settings",
+            "Smart home setup: doorbells, cameras, thermostats",
+        ],
+        goodFor: "New phones, tablets, computers, printers, smart TVs, and streaming devices",
+        note: "You'll need to provide account passwords, unlock codes, and pay any third-party subscription costs.",
+    },
+    {
+        id: "safety",
+        icon: ShieldCheckIcon,
+        accentClass: "bg-brown-400",
+        title: "Online Safety & Scam Protection Review",
+        remote: "$119",
+        inHome: "$159",
+        description:
+            "Feel more confident online. We help you recognize scams, secure your accounts, and protect what matters most to you.",
+        examples: [
+            "Password and account safety review",
+            "Help setting up a password manager",
+            "Two-factor authentication setup",
+            "Recognizing scam emails, calls & fake websites",
+            "Social media privacy settings",
+            "Safer online shopping and banking habits",
+        ],
+        goodFor: "Anyone worried about scams, suspicious emails, or online security",
+        note: "This service helps reduce risk but cannot guarantee complete protection from all scams, fraud, or malware.",
+    },
+    {
+        id: "backup",
+        icon: FolderOpenIcon,
+        accentClass: "bg-caramel-400",
+        title: "Photo, File & Backup Organization",
+        remote: "$119",
+        inHome: "$159",
+        description:
+            "Protect your memories and important documents. We'll organize your files and set up backups so you don't lose what matters.",
+        examples: [
+            "Reviewing and setting up cloud or external-drive backups",
+            "Organizing photos, videos, and documents",
+            "Email cleanup and file-saving guidance",
+            "Scanning old photos where equipment and time allow",
+            "Creating simple folders and albums easy to find",
+        ],
+        goodFor: "Anyone whose photos and files are scattered or unprotected",
+        note: "Backup services reduce the chance of data loss but cannot guarantee every file can be recovered, transferred, or preserved.",
+    },
+];
+
+const bookingSteps = [
+    {
+        number: "1",
+        icon: PhoneIcon,
+        title: "Tell Us What You Need",
+        desc: "Call, email, or fill out our contact form. Describe your problem in plain language — no technical terms needed.",
+    },
+    {
+        number: "2",
         icon: HeartHandshakeIcon,
+        title: "We Recommend the Best Option",
+        desc: "We'll suggest the right service and advise whether remote or in-home support makes more sense for your situation.",
     },
     {
-        title: "Community",
-        description:
-            "The GroundedTutor community is open to all. Join us to discover a community of like-minded individuals who are willing to share their knowledge and expertise.",
-        icon: UsersIcon,
+        number: "3",
+        icon: CalendarCheckIcon,
+        title: "Choose a Time That Works",
+        desc: "Pick an appointment time that's convenient for you. We'll work around your schedule.",
     },
+    {
+        number: "4",
+        icon: UserCheckIcon,
+        title: "We Explain Everything First",
+        desc: "Before making any changes, we explain what we're going to do and ask for your approval. You stay in control.",
+    },
+    {
+        number: "5",
+        icon: CircleCheck,
+        title: "Simple Next Steps After",
+        desc: "After your session you'll receive clear, plain-language next steps you can keep and refer back to.",
+    },
+];
+
+const revealDelays = [
+    "reveal-delay-1",
+    "reveal-delay-2",
+    "reveal-delay-3",
+    "reveal-delay-4",
+    "reveal-delay-5",
+];
+
+const decisionItems = [
+    { quote: "My computer is slow.", service: "Friendly Tech Help Session", anchor: "#tech-help" },
+    {
+        quote: "I bought a new phone, tablet, or computer.",
+        service: "New Device Setup",
+        anchor: "#device-setup",
+    },
+    {
+        quote: "I'm worried about scams or passwords.",
+        service: "Online Safety & Scam Protection Review",
+        anchor: "#safety",
+    },
+    {
+        quote: "My photos and files are everywhere.",
+        service: "Photo, File & Backup Organization",
+        anchor: "#backup",
+    },
+    { quote: "I want ongoing help.", service: "Ongoing Support Plan", anchor: "#plans" },
 ];
 ---
 
-<Layout title="Personalized education for the 21st century">
-    <div class="mx-auto max-w-7xl space-y-8 px-5 md:space-y-24">
-        <div class="grid place-items-center pt-16 md:pt-12 lg:grid-cols-2">
-            <div class="hidden py-6 md:order-1 md:block">
-                <Picture
-                    src={heroImage}
-                    alt="Groundhog pointing to blackboard containing code"
-                    widths={[200, 400, 600]}
-                    class="grayscale filter"
-                    sizes="(max-width: 800px) 100vw, 620px"
-                    loading="eager"
-                    format="avif"
-                />
-            </div>
-            <div>
-                <h1
-                    class="text-5xl font-bold lg:text-6xl lg:tracking-tight xl:text-7xl xl:tracking-tighter"
+<MarketingLayout title="Friendly Tech Help for Older Adults in Montreal">
+    <!-- Skip nav for accessibility -->
+    <a
+        href="#main-content"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-brown-700 focus:px-4 focus:py-2 focus:text-white"
+    >
+        Skip to main content
+    </a>
+
+    <!-- ─────────────────────────────────────────────
+         NAVIGATION
+    ───────────────────────────────────────────── -->
+    <header id="site-nav" class="fixed top-0 right-0 left-0 z-40">
+        <div class="mx-auto max-w-7xl px-5 md:px-8">
+            <nav class="flex h-16 items-center justify-between md:h-20" aria-label="Main navigation">
+                <!-- Logo -->
+                <a href="/" class="shrink-0" aria-label="GroundedTutor — Home">
+                    <span class="text-lg font-bold tracking-tight md:text-xl">
+                        <span class="text-brown-700">Grounded</span><span class="text-brown-950"
+                            >Tutor</span
+                        >
+                    </span>
+                </a>
+
+                <!-- Desktop links -->
+                <ul
+                    class="hidden items-center gap-7 text-sm font-medium text-brown-700 md:flex"
+                    role="list"
                 >
-                    Personalized education for the 21st century
-                </h1>
-                <p class="mt-4 max-w-xl text-lg text-slate-600">
-                    GroundedTutor is a platform designed to provide education which is personalized to
-                    one's learning objective, without compromising on quality.<wbr /> We believe that providing
-                    students and professionals alike with access to dodiv experts, will enable them to make
-                    the best use of the time spent learning any subject.
-                </p>
-                <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-                    <Link
-                        href={import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING}
-                        class="flex items-center justify-center gap-1"
-                        target="_blank"
+                    <li>
+                        <a href="#services" class="transition-colors hover:text-brown-950">Services</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#plans" class="transition-colors hover:text-brown-950">Plans</a>
+                    </li>
+                    <li>
+                        <a href="#how-it-works" class="transition-colors hover:text-brown-950"
+                            >How It Works</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#contact" class="transition-colors hover:text-brown-950">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Desktop CTA -->
+                <a
+                    href={bookingUrl}
+                    class="hidden items-center gap-2 rounded-lg bg-brown-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brown-800 focus-visible:ring-2 focus-visible:ring-brown-700 focus-visible:ring-offset-2 focus-visible:outline-none md:inline-flex"
+                >
+                    <CalendarCheckIcon class="size-4" />
+                    Book a Session
+                </a>
+
+                <!-- Mobile menu toggle -->
+                <button
+                    id="mobile-menu-btn"
+                    class="rounded p-2 text-brown-700 hover:text-brown-900 focus-visible:ring-2 focus-visible:ring-brown-700 focus-visible:ring-offset-2 focus-visible:outline-none md:hidden"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                    aria-label="Open navigation menu"
+                >
+                    <span class="mb-1.5 block h-0.5 w-6 bg-current transition-all" id="mbar1"></span>
+                    <span class="mb-1.5 block h-0.5 w-6 bg-current transition-all" id="mbar2"></span>
+                    <span class="block h-0.5 w-6 bg-current transition-all" id="mbar3"></span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Mobile menu panel -->
+        <div
+            id="mobile-menu"
+            class="hidden border-t border-brown-200 bg-brown-50 shadow-lg md:hidden"
+            role="dialog"
+            aria-label="Mobile navigation"
+        >
+            <div class="mx-auto max-w-7xl space-y-1 px-5 py-5">
+                <a
+                    href="#services"
+                    class="block rounded-lg px-4 py-3 font-medium text-brown-800 transition-colors hover:bg-brown-100"
+                    >Services</a
+                >
+                <a
+                    href="#plans"
+                    class="block rounded-lg px-4 py-3 font-medium text-brown-800 transition-colors hover:bg-brown-100"
+                    >Plans</a
+                >
+                <a
+                    href="#how-it-works"
+                    class="block rounded-lg px-4 py-3 font-medium text-brown-800 transition-colors hover:bg-brown-100"
+                    >How It Works</a
+                >
+                <a
+                    href="#contact"
+                    class="block rounded-lg px-4 py-3 font-medium text-brown-800 transition-colors hover:bg-brown-100"
+                    >Contact</a
+                >
+                <div class="pt-3 pb-1">
+                    <a
+                        href={bookingUrl}
+                        class="block w-full rounded-xl bg-brown-700 px-5 py-3.5 text-center font-semibold text-white transition-colors hover:bg-brown-800"
+                        >Book a Session</a
                     >
-                        <CalendarPlus2Icon class="size-5 text-white" />
-                        &nbsp;Book a session
-                    </Link>
                 </div>
             </div>
         </div>
-        <div class="space-y-4">
-            <h2 class="text-4xl font-bold lg:text-5xl lg:tracking-tight">Experts for every topic</h2>
-            <p class="text-lg text-slate-600">
-                Our team of experts provide the domain knowledge necessary to navigate tough subjects.
-            </p>
-            <div class="grid gap-16 pt-4 sm:grid-cols-2 md:grid-cols-3">
-                {
-                    features.map((item) => (
-                        <div class="flex items-start gap-4">
-                            <div class="flex size-8 items-center justify-between rounded-full bg-black p-2">
-                                <item.icon class="text-white" />
+    </header>
+
+    <main id="main-content">
+        <!-- ─────────────────────────────────────────────
+             HERO
+        ───────────────────────────────────────────── -->
+        <section
+            class="relative flex min-h-screen items-center overflow-hidden bg-brown-950 pt-16 md:pt-20"
+        >
+            <!-- Ambient glows -->
+            <div
+                class="h-md pointer-events-none absolute top-1/3 left-1/4 w-md rounded-full bg-brown-700 opacity-20 blur-3xl"
+            >
+            </div>
+            <div
+                class="pointer-events-none absolute right-1/5 bottom-1/4 h-64 w-64 rounded-full bg-caramel-400 opacity-10 blur-3xl"
+            >
+            </div>
+
+            <!-- Decorative rings -->
+            <div
+                class="pointer-events-none absolute top-24 right-8 h-56 w-56 rounded-full border border-brown-700 opacity-25 md:right-20"
+            >
+            </div>
+            <div
+                class="pointer-events-none absolute top-40 right-20 h-32 w-32 rounded-full border border-brown-600 opacity-20 md:right-36"
+            >
+            </div>
+
+            <div class="relative mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+                <div class="max-w-3xl">
+                    <!-- Location badge -->
+                    <div
+                        class="reveal mb-8 inline-flex items-center gap-2 rounded-full bg-brown-800 px-4 py-1.5 text-sm font-medium text-caramel-300"
+                    >
+                        <MapPinIcon class="size-4 shrink-0" />
+                        <span>Serving Montreal &amp; Nearby Areas</span>
+                    </div>
+
+                    <!-- Headline -->
+                    <h1
+                        class="reveal reveal-delay-1 mb-6 font-serif text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.12] font-bold text-white"
+                    >
+                        Friendly Tech Help<br />
+                        <span class="text-caramel-300">for Older Adults</span><br />
+                        in Montreal
+                    </h1>
+
+                    <!-- Subheadline -->
+                    <p
+                        class="reveal reveal-delay-2 mb-10 max-w-xl text-xl leading-relaxed text-brown-200 md:text-2xl"
+                    >
+                        Patient, plain-English support at home, by phone, or online. No jargon. No
+                        rushing. Just friendly help.
+                    </p>
+
+                    <!-- CTA buttons -->
+                    <div class="reveal reveal-delay-3 mb-14 flex flex-col gap-4 sm:mb-16 sm:flex-row">
+                        <a
+                            href={bookingUrl}
+                            class="inline-flex items-center justify-center gap-2 rounded-xl bg-caramel-400 px-7 py-4 text-lg font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-caramel-500 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-caramel-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brown-950 focus-visible:outline-none"
+                        >
+                            <CalendarCheckIcon class="size-5" />
+                            Book a Tech Help Session
+                        </a>
+                        <a
+                            href="#decision-helper"
+                            class="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-brown-500 px-7 py-4 text-lg font-medium text-brown-100 transition-all hover:border-brown-400 hover:bg-brown-800 focus-visible:ring-2 focus-visible:ring-brown-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brown-950 focus-visible:outline-none"
+                        >
+                            Ask What Service Is Right for Me
+                        </a>
+                    </div>
+
+                    <!-- Trust badges -->
+                    <div
+                        class="reveal reveal-delay-4 flex flex-wrap gap-x-6 gap-y-3 text-sm text-brown-300"
+                    >
+                        <div class="flex items-center gap-2">
+                            <HouseIcon class="size-4 shrink-0 text-caramel-300" />
+                            <span>In-Home Visits</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <PhoneIcon class="size-4 shrink-0 text-caramel-300" />
+                            <span>Phone Support</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <MonitorIcon class="size-4 shrink-0 text-caramel-300" />
+                            <span>Remote Support</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <ShieldCheckIcon class="size-4 shrink-0 text-caramel-300" />
+                            <span>Private &amp; Trustworthy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             WHY CHOOSE US
+        ───────────────────────────────────────────── -->
+        <section class="bg-white py-20 md:py-28">
+            <div class="mx-auto max-w-6xl px-5 md:px-8">
+                <div class="reveal mb-14 text-center">
+                    <h2
+                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brown-900"
+                    >
+                        Tech help that feels different
+                    </h2>
+                    <p class="mx-auto max-w-2xl text-lg text-brown-600">
+                        Technology should make life easier, not more stressful. That's why we do
+                        things a little differently.
+                    </p>
+                </div>
+
+                <div class="grid gap-8 md:grid-cols-3">
+                    <div
+                        class="reveal reveal-delay-1 rounded-2xl bg-brown-50 p-8 text-center transition-colors hover:bg-brown-100"
+                    >
+                        <div
+                            class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brown-100 text-brown-700"
+                        >
+                            <HeartHandshakeIcon class="size-8" />
+                        </div>
+                        <h3 class="mb-3 text-xl font-bold text-brown-900">
+                            Patient &amp; Non-Judgmental
+                        </h3>
+                        <p class="leading-relaxed text-brown-600">
+                            No rushing. No confusing jargon. We explain everything clearly and kindly,
+                            at whatever pace feels comfortable for you.
+                        </p>
+                    </div>
+
+                    <div
+                        class="reveal reveal-delay-2 rounded-2xl bg-brown-50 p-8 text-center transition-colors hover:bg-brown-100"
+                    >
+                        <div
+                            class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brown-100 text-brown-700"
+                        >
+                            <MapPinIcon class="size-8" />
+                        </div>
+                        <h3 class="mb-3 text-xl font-bold text-brown-900">Local to Montreal</h3>
+                        <p class="leading-relaxed text-brown-600">
+                            We come to your home in Montreal and nearby areas, or help you over the
+                            phone or online — whichever feels most comfortable for you.
+                        </p>
+                    </div>
+
+                    <div
+                        class="reveal reveal-delay-3 rounded-2xl bg-brown-50 p-8 text-center transition-colors hover:bg-brown-100"
+                    >
+                        <div
+                            class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brown-100 text-brown-700"
+                        >
+                            <ShieldCheckIcon class="size-8" />
+                        </div>
+                        <h3 class="mb-3 text-xl font-bold text-brown-900">You Stay in Control</h3>
+                        <p class="leading-relaxed text-brown-600">
+                            We explain every change before we make it. Your privacy and comfort
+                            matter. Nothing happens without your approval.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             SERVICES
+        ───────────────────────────────────────────── -->
+        <section id="services" class="bg-brown-50 py-20 md:py-28">
+            <div class="mx-auto max-w-6xl px-5 md:px-8">
+                <div class="reveal mb-14 text-center">
+                    <h2
+                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brown-900"
+                    >
+                        Our Services
+                    </h2>
+                    <p class="mx-auto max-w-2xl text-lg text-brown-600">
+                        Choose the service that fits your needs, or <a
+                            href="#decision-helper"
+                            class="text-brown-700 underline underline-offset-2 hover:text-brown-900"
+                            >ask us to help you decide</a
+                        >.
+                    </p>
+                </div>
+
+                <div class="grid gap-7 md:grid-cols-2">
+                    {
+                        services.map((s, i) => (
+                            <div
+                                id={s.id}
+                                class={`reveal ${revealDelays[i] ?? ""} overflow-hidden rounded-2xl border border-brown-100 bg-white shadow-sm transition-shadow hover:shadow-md`}
+                            >
+                                <div class={`h-1.5 ${s.accentClass}`} />
+                                <div class="p-7 md:p-8">
+                                    <div class="mb-5 flex items-start gap-4">
+                                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brown-100 text-brown-700">
+                                            <s.icon class="size-6" />
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg leading-snug font-bold text-brown-900 md:text-xl">
+                                                {s.title}
+                                            </h3>
+                                            <p class="mt-1 text-sm font-semibold text-caramel-500 md:text-base">
+                                                Starting at {s.remote} remote&nbsp;·&nbsp;{s.inHome}{" "}
+                                                in-home
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p class="mb-5 leading-relaxed text-brown-600">{s.description}</p>
+
+                                    <p class="mb-3 text-xs font-bold tracking-widest text-brown-700 uppercase">
+                                        Examples include:
+                                    </p>
+                                    <ul class="mb-6 space-y-1.5">
+                                        {s.examples.map((ex) => (
+                                            <li class="flex items-start gap-2 text-sm text-brown-600">
+                                                <CircleCheck class="mt-0.5 size-4 shrink-0 text-brown-500" />
+                                                <span>{ex}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <div class="space-y-3 border-t border-brown-100 pt-5">
+                                        {s.note && (
+                                            <p class="text-xs leading-relaxed text-brown-400 italic">
+                                                {s.note}
+                                            </p>
+                                        )}
+                                        <a
+                                            href={bookingUrl}
+                                            class="inline-flex items-center gap-1.5 rounded-lg bg-brown-700 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brown-800 focus-visible:ring-2 focus-visible:ring-brown-700 focus-visible:ring-offset-2 focus-visible:outline-none"
+                                        >
+                                            Book This Service <ChevronRightIcon class="size-4" />
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="text-lg font-semibold">{item.title}</h3>{" "}
-                                <p class="mt-2 leading-relaxed text-slate-500">{item.description}</p>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             ONGOING PLANS
+        ───────────────────────────────────────────── -->
+        <section id="plans" class="bg-white py-20 md:py-28">
+            <div class="mx-auto max-w-5xl px-5 md:px-8">
+                <div class="reveal mb-14 text-center">
+                    <h2
+                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brown-900"
+                    >
+                        Ongoing Support Plans
+                    </h2>
+                    <p class="mx-auto max-w-2xl text-lg text-brown-600">
+                        For those who want a familiar person to call before small problems become
+                        frustrating.
+                    </p>
+                </div>
+
+                <div class="grid gap-8 md:grid-cols-2">
+                    <!-- Technology Confidence Plan -->
+                    <div
+                        class="reveal reveal-delay-1 relative overflow-hidden rounded-2xl bg-brown-950 p-8 text-white"
+                    >
+                        <div
+                            class="pointer-events-none absolute top-0 right-0 h-40 w-40 translate-x-10 -translate-y-10 rounded-full bg-caramel-400 opacity-10"
+                        >
+                        </div>
+
+                        <div class="mb-5 flex items-center gap-3">
+                            <div
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-caramel-400"
+                            >
+                                <StarIcon class="size-5 text-white" />
+                            </div>
+                            <span
+                                class="rounded-full bg-caramel-400/20 px-3 py-1 text-xs font-bold tracking-widest text-caramel-300 uppercase"
+                                >Most Popular</span
+                            >
+                        </div>
+
+                        <h3 class="mb-2 text-2xl font-bold">Technology Confidence Plan</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-caramel-300">$39</span>
+                            <span class="text-lg text-brown-300">/month</span>
+                            <p class="mt-1 text-sm text-brown-400">or $99 per quarter</p>
+                        </div>
+
+                        <ul class="mb-8 space-y-3">
+                            {
+                                [
+                                    "One scheduled remote or phone session each month (up to 30 min)",
+                                    "Priority booking when available",
+                                    "10% off in-home visits and larger service packages",
+                                    "Friendly reminders for updates, backups & online safety",
+                                ].map((item) => (
+                                    <li class="flex items-start gap-2.5 text-sm leading-relaxed text-brown-200">
+                                        <CircleCheck class="mt-0.5 size-5 shrink-0 text-caramel-300" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+
+                        <a
+                            href="#contact"
+                            class="block w-full rounded-xl bg-caramel-400 px-6 py-3.5 text-center font-semibold text-white transition-colors hover:bg-caramel-500 focus-visible:ring-2 focus-visible:ring-caramel-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brown-950 focus-visible:outline-none"
+                        >
+                            Get Started
+                        </a>
+                    </div>
+
+                    <!-- Backup & Safety Check Plan -->
+                    <div
+                        class="reveal reveal-delay-2 relative rounded-2xl border-2 border-brown-200 bg-brown-50 p-8"
+                    >
+                        <div class="mb-5 flex items-center gap-3">
+                            <div
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brown-100 text-brown-700"
+                            >
+                                <RefreshCwIcon class="size-5" />
                             </div>
                         </div>
-                    ))
-                }
-            </div>
-        </div>
-        <div>
-            <h2 class="text-center text-3xl font-bold lg:text-4xl lg:tracking-tight">
-                Find us online
-            </h2>
-            <div class="mt-10 flex flex-wrap items-center justify-center gap-8 md:gap-20">
-                {
-                    Object.entries(socialLinkIcons).map(([url, iconName]) => (
-                        <a href={url} target="_blank" rel="noopener">
-                            <Icon
-                                name={iconName}
-                                class="size-8 transition-all delay-75 ease-in-out md:size-12 md:hover:scale-110"
-                            />
+
+                        <h3 class="mb-2 text-2xl font-bold text-brown-900">
+                            Backup &amp; Safety Check Plan
+                        </h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-brown-900">$19</span>
+                            <span class="text-lg text-brown-500">/month</span>
+                            <p class="mt-1 text-sm text-brown-500">
+                                + any third-party software or storage costs
+                            </p>
+                        </div>
+
+                        <ul class="mb-6 space-y-3">
+                            {
+                                [
+                                    "Periodic help checking your backups",
+                                    "Password manager health checks",
+                                    "Device update checks",
+                                    "Basic security settings review",
+                                ].map((item) => (
+                                    <li class="flex items-start gap-2.5 text-sm leading-relaxed text-brown-600">
+                                        <CircleCheck class="mt-0.5 size-5 shrink-0 text-brown-500" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+
+                        <p class="mb-7 text-xs leading-relaxed text-brown-400 italic">
+                            This plan is not continuous security monitoring and does not replace
+                            professional cybersecurity services.
+                        </p>
+
+                        <a
+                            href="#contact"
+                            class="block w-full rounded-xl bg-brown-700 px-6 py-3.5 text-center font-semibold text-white transition-colors hover:bg-brown-800 focus-visible:ring-2 focus-visible:ring-brown-700 focus-visible:ring-offset-2 focus-visible:outline-none"
+                        >
+                            Get Started
                         </a>
-                    ))
-                }
+                    </div>
+                </div>
             </div>
-        </div>
-        <div
-            class="mx-auto mt-20 flex max-w-5xl flex-col items-center rounded-lg bg-black p-8 text-center md:px-20 md:py-20"
-        >
-            <h2 class="text-4xl tracking-tight text-white md:text-6xl">
-                Discover your learning path
-            </h2>
-            <p class="mt-4 text-lg text-slate-400 md:text-xl">
-                Book a session and embark on a new learning experience
-            </p>
-            <div class="mt-5 flex">
-                <Link
-                    href={import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING}
-                    target="_blank"
-                    style="inverted">Book Now</Link
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             HOW BOOKING WORKS
+        ───────────────────────────────────────────── -->
+        <section id="how-it-works" class="bg-brown-100 py-20 md:py-28">
+            <div class="mx-auto max-w-6xl px-5 md:px-8">
+                <div class="reveal mb-16 text-center">
+                    <h2
+                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brown-900"
+                    >
+                        How Booking Works
+                    </h2>
+                    <p class="mx-auto max-w-2xl text-lg text-brown-600">
+                        Getting help is simple. Here's what to expect from start to finish.
+                    </p>
+                </div>
+
+                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+                    {
+                        bookingSteps.map((step, i) => (
+                            <div class={`reveal ${revealDelays[i] ?? ""}`}>
+                                <div class="flex items-start gap-5 lg:flex-col lg:items-center lg:text-center">
+                                    <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brown-700 text-xl font-bold text-white shadow-sm">
+                                        {step.number}
+                                    </div>
+                                    <div>
+                                        <div class="mb-2 lg:mb-3 lg:flex lg:justify-center">
+                                            <step.icon class="size-5 text-brown-600" />
+                                        </div>
+                                        <h3 class="mb-1.5 text-base font-bold text-brown-900">
+                                            {step.title}
+                                        </h3>
+                                        <p class="text-sm leading-relaxed text-brown-600">
+                                            {step.desc}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             REMOTE vs IN-HOME + SERVICE AREA
+        ───────────────────────────────────────────── -->
+        <section class="bg-white py-20 md:py-28">
+            <div class="mx-auto max-w-6xl px-5 md:px-8">
+                <div class="reveal mb-14 text-center">
+                    <h2
+                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brown-900"
+                    >
+                        Remote or In-Home?
+                    </h2>
+                    <p class="mx-auto max-w-2xl text-lg text-brown-600">
+                        We'll help you figure out which works best for your situation. Many issues can
+                        be resolved quickly from the comfort of your home — without anyone needing to
+                        visit.
+                    </p>
+                </div>
+
+                <div class="mb-14 grid gap-8 md:grid-cols-2">
+                    <!-- Remote -->
+                    <div
+                        class="reveal reveal-delay-1 rounded-2xl border border-brown-100 bg-brown-50 p-8"
+                    >
+                        <div class="mb-6 flex items-center gap-3">
+                            <div
+                                class="flex h-12 w-12 items-center justify-center rounded-xl bg-brown-100 text-brown-700"
+                            >
+                                <MonitorIcon class="size-6" />
+                            </div>
+                            <h3 class="text-xl font-bold text-brown-900">Remote &amp; Phone</h3>
+                        </div>
+                        <p class="mb-5 text-sm leading-relaxed text-brown-600">
+                            Remote support is a great fit for software questions and everyday guidance
+                            — no travel required.
+                        </p>
+                        <ul class="space-y-2">
+                            {
+                                [
+                                    "Software issues & settings",
+                                    "Email and account help",
+                                    "Video call guidance",
+                                    "Learning to use apps or websites",
+                                    "Security reviews & password help",
+                                ].map((item) => (
+                                    <li class="flex items-center gap-2 text-sm text-brown-700">
+                                        <CircleCheck class="size-4 shrink-0 text-brown-500" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- In-Home -->
+                    <div
+                        class="reveal reveal-delay-2 rounded-2xl border border-brown-100 bg-brown-50 p-8"
+                    >
+                        <div class="mb-6 flex items-center gap-3">
+                            <div
+                                class="flex h-12 w-12 items-center justify-center rounded-xl bg-brown-100 text-brown-700"
+                            >
+                                <HouseIcon class="size-6" />
+                            </div>
+                            <h3 class="text-xl font-bold text-brown-900">In-Home Visit</h3>
+                        </div>
+                        <p class="mb-5 text-sm leading-relaxed text-brown-600">
+                            Some things are just easier in person. In-home visits are ideal when
+                            hands-on help makes a real difference.
+                        </p>
+                        <ul class="space-y-2">
+                            {
+                                [
+                                    "Printer setup & troubleshooting",
+                                    "Wi-Fi & router issues",
+                                    "Smart home device installation",
+                                    "Accessibility setup (larger text, voice, etc.)",
+                                    "Hands-on learning at your own pace",
+                                ].map((item) => (
+                                    <li class="flex items-center gap-2 text-sm text-brown-700">
+                                        <CircleCheck class="size-4 shrink-0 text-brown-500" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service area note -->
+                <div
+                    class="reveal flex flex-col items-start gap-5 rounded-2xl border border-caramel-200 bg-caramel-100 p-7 md:flex-row md:items-center"
                 >
+                    <div
+                        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-caramel-200 text-caramel-500"
+                    >
+                        <MapPinIcon class="size-6" />
+                    </div>
+                    <div>
+                        <h3 class="mb-1 text-lg font-bold text-brown-900">Service Area</h3>
+                        <p class="text-sm leading-relaxed text-brown-700">
+                            <strong>In-home visits:</strong> Montreal and nearby areas. Travel fees may
+                            apply outside the main service area.
+                            <br />
+                            <strong>Remote &amp; phone support:</strong> May be available anywhere in Canada
+                            when suitable for the issue.
+                            <br />
+                            <span class="text-brown-600"
+                                >Some issues may require parts, third-party accounts, manufacturer
+                                support, or a specialist repair shop — we'll let you know.</span
+                            >
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             TRUST & PRIVACY
+        ───────────────────────────────────────────── -->
+        <section class="bg-brown-900 py-20 md:py-28">
+            <div class="mx-auto max-w-6xl px-5 md:px-8">
+                <div class="reveal mb-14 text-center">
+                    <div
+                        class="mb-5 inline-flex items-center gap-2 text-sm font-medium text-caramel-300"
+                    >
+                        <LockIcon class="size-4" />
+                        <span class="tracking-widest uppercase">Privacy &amp; Trust</span>
+                    </div>
+                    <h2
+                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-white"
+                    >
+                        Your privacy and safety come first
+                    </h2>
+                    <p class="mx-auto max-w-2xl text-lg text-brown-300">
+                        We want you to feel completely comfortable. Here's our commitment to you.
+                    </p>
+                </div>
+
+                <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    {
+                        [
+                            {
+                                icon: UserCheckIcon,
+                                title: "You're always in control",
+                                desc: "We explain every change before making it. You approve every step. Nothing changes without your knowledge.",
+                            },
+                            {
+                                icon: LockIcon,
+                                title: "We never ask for bank PINs",
+                                desc: "We will never ask for your banking PIN, card numbers, or any password that isn't needed to help you.",
+                            },
+                            {
+                                icon: ShieldCheckIcon,
+                                title: "Account access only as needed",
+                                desc: "We may help access accounts or adjust settings, but only as needed for your session. You should be present whenever possible.",
+                            },
+                            {
+                                icon: HouseIcon,
+                                title: "Your home, your rules",
+                                desc: "We work with you and around you. We treat your home and belongings with care and respect.",
+                            },
+                            {
+                                icon: RefreshCwIcon,
+                                title: "No advice beyond tech",
+                                desc: "We don't provide financial, legal, medical, or investment advice. We focus only on technology support.",
+                            },
+                            {
+                                icon: MapPinIcon,
+                                title: "Canadian privacy standards",
+                                desc: "Personal information collected for booking or service records is handled in accordance with applicable Canadian and Quebec privacy requirements.",
+                            },
+                        ].map((item, i) => (
+                            <div
+                                class={`reveal ${revealDelays[i % 3] ?? ""} rounded-2xl bg-brown-800 p-6`}
+                            >
+                                <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brown-700 text-caramel-300">
+                                    <item.icon class="size-5" />
+                                </div>
+                                <h3 class="mb-2 text-base font-bold text-white">{item.title}</h3>
+                                <p class="text-sm leading-relaxed text-brown-300">{item.desc}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             DECISION HELPER
+        ───────────────────────────────────────────── -->
+        <section id="decision-helper" class="bg-brown-50 py-20 md:py-28">
+            <div class="mx-auto max-w-4xl px-5 md:px-8">
+                <div class="reveal mb-14 text-center">
+                    <div
+                        class="mb-5 inline-flex items-center gap-2 text-sm font-medium text-brown-600"
+                    >
+                        <CircleQuestionMarkIcon class="size-4" />
+                        <span class="tracking-widest uppercase">Not Sure What to Book?</span>
+                    </div>
+                    <h2
+                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brown-900"
+                    >
+                        We'll help you figure it out
+                    </h2>
+                    <p class="text-lg text-brown-600">
+                        Tell us what sounds most like your situation and we'll point you in the right
+                        direction.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    {
+                        decisionItems.map((item, i) => (
+                            <a
+                                href={item.anchor}
+                                class={`reveal ${revealDelays[i] ?? ""} group flex items-center justify-between gap-4 rounded-xl border border-brown-200 bg-white px-6 py-5 transition-all hover:border-brown-400 hover:bg-brown-50`}
+                            >
+                                <div class="flex items-start gap-4">
+                                    <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brown-100 text-sm font-bold text-brown-700 transition-colors group-hover:bg-brown-200">
+                                        {i + 1}
+                                    </span>
+                                    <div>
+                                        <p class="font-medium text-brown-900">
+                                            &ldquo;{item.quote}&rdquo;
+                                        </p>
+                                        <p class="mt-0.5 text-sm text-brown-500">→ {item.service}</p>
+                                    </div>
+                                </div>
+                                <ArrowRightIcon class="size-5 shrink-0 text-brown-400 transition-all group-hover:translate-x-1 group-hover:text-brown-700" />
+                            </a>
+                        ))
+                    }
+                </div>
+
+                <div class="reveal mt-10 text-center">
+                    <p class="mb-5 text-brown-600">Still not sure? We're happy to help you choose.</p>
+                    <a
+                        href="#contact"
+                        class="inline-flex items-center gap-2 rounded-xl bg-brown-700 px-7 py-3.5 font-semibold text-white transition-colors hover:bg-brown-800 focus-visible:ring-2 focus-visible:ring-brown-700 focus-visible:ring-offset-2 focus-visible:outline-none"
+                    >
+                        Ask Us &amp; We'll Recommend the Right Service
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             CONTACT / CTA
+        ───────────────────────────────────────────── -->
+        <section id="contact" class="bg-brown-800 py-20 md:py-28">
+            <div class="mx-auto max-w-4xl px-5 text-center md:px-8">
+                <div class="reveal">
+                    <h2
+                        class="mb-5 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-white"
+                    >
+                        Ready for friendly tech help?
+                    </h2>
+                    <p class="mx-auto mb-12 max-w-xl text-xl text-brown-200">
+                        No question is too small. No problem is too simple. We're here whenever you
+                        need us.
+                    </p>
+                </div>
+
+                <div class="mb-12 grid gap-5 sm:grid-cols-3">
+                    <!-- Phone -->
+                    <div class="reveal reveal-delay-1 rounded-2xl bg-brown-700 p-6 text-center">
+                        <div
+                            class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brown-600 text-caramel-300"
+                        >
+                            <PhoneIcon class="size-6" />
+                        </div>
+                        <p
+                            class="mb-2 text-sm font-semibold tracking-widest text-brown-300 uppercase"
+                        >
+                            Call Us
+                        </p>
+                        <a
+                            href=`tel:${PUBLIC_SITE_PHONE}`
+                            class="text-xl font-bold text-white transition-colors hover:text-caramel-300"
+                        >
+                            {formattedPhone}
+                        </a>
+                        <p class="mt-1 text-xs text-brown-400">Mon-Friday, 4 pm - 8 pm</p>
+                        <p class="mt-1 text-xs text-brown-400">Sat, 8 am - 8 pm</p>
+                        <p class="mt-1 text-xs text-brown-400">Sun, 1 pm - 6 pm</p>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="reveal reveal-delay-2 rounded-2xl bg-brown-700 p-6 text-center">
+                        <div
+                            class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brown-600 text-caramel-300"
+                        >
+                            <MailIcon class="size-6" />
+                        </div>
+                        <p
+                            class="mb-2 text-sm font-semibold tracking-widest text-brown-300 uppercase"
+                        >
+                            Email Us
+                        </p>
+                        <a
+                            href=`mailto:${PUBLIC_CONTACT_EMAIL}`
+                            class="text-base font-semibold break-all text-white transition-colors hover:text-caramel-300"
+                        >
+                            {PUBLIC_CONTACT_EMAIL}
+                        </a>
+                        <p class="mt-1 text-xs text-brown-400">We reply within one business day</p>
+                    </div>
+
+                    <!-- Book Online -->
+                    <div class="reveal reveal-delay-3 rounded-2xl bg-brown-700 p-6 text-center">
+                        <div
+                            class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brown-600 text-caramel-300"
+                        >
+                            <CalendarCheckIcon class="size-6" />
+                        </div>
+                        <p
+                            class="mb-2 text-sm font-semibold tracking-widest text-brown-300 uppercase"
+                        >
+                            Book Online
+                        </p>
+                        <a
+                            href={bookingUrl}
+                            class="text-base font-semibold text-white transition-colors hover:text-caramel-300"
+                        >
+                            Schedule a Session
+                        </a>
+                        <p class="mt-1 text-xs text-brown-400">Choose a time that works for you</p>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <a
+                        href={bookingUrl}
+                        class="inline-flex items-center gap-2 rounded-2xl bg-caramel-400 px-10 py-5 text-xl font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-caramel-500 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-caramel-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brown-800 focus-visible:outline-none"
+                    >
+                        <CalendarCheckIcon class="size-6" />
+                        Book a Tech Help Session
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ─────────────────────────────────────────────
+         FOOTER
+    ───────────────────────────────────────────── -->
+    <footer class="bg-brown-950 text-brown-400">
+        <div class="mx-auto max-w-6xl px-5 py-14 md:px-8">
+            <div class="mb-10 grid gap-10 md:grid-cols-3">
+                <!-- Brand -->
+                <div>
+                    <span class="text-lg font-bold text-white">
+                        <span class="text-caramel-300">Grounded</span>Tutor
+                    </span>
+                    <p class="mt-3 text-sm leading-relaxed text-brown-400">
+                        Friendly, patient tech help for older adults in Montreal. In-home, by phone,
+                        or online.
+                    </p>
+                </div>
+
+                <!-- Quick links -->
+                <div>
+                    <p class="mb-4 text-xs font-bold tracking-widest text-brown-500 uppercase">
+                        Services
+                    </p>
+                    <ul class="space-y-2 text-sm">
+                        <li>
+                            <a href="#tech-help" class="transition-colors hover:text-white"
+                                >Friendly Tech Help Session</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#device-setup" class="transition-colors hover:text-white"
+                                >New Device Setup</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#safety" class="transition-colors hover:text-white"
+                                >Online Safety &amp; Scam Protection</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#backup" class="transition-colors hover:text-white"
+                                >Photo, File &amp; Backup Organization</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#plans" class="transition-colors hover:text-white"
+                                >Ongoing Support Plans</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <p class="mb-4 text-xs font-bold tracking-widest text-brown-500 uppercase">
+                        Contact
+                    </p>
+                    <ul class="space-y-2 text-sm">
+                        <li>
+                            <a
+                                href="tel:+15140000000"
+                                class="flex items-center gap-2 transition-colors hover:text-white"
+                            >
+                                <PhoneIcon class="size-3.5" />(514) 000-0000
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="mailto:hello@groundedtutor.online"
+                                class="flex items-center gap-2 transition-colors hover:text-white"
+                            >
+                                <MailIcon class="size-3.5" />hello@groundedtutor.online
+                            </a>
+                        </li>
+                        <li class="pt-1">
+                            <a
+                                href={bookingUrl}
+                                class="inline-flex items-center gap-1.5 rounded-lg bg-caramel-400 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-caramel-500"
+                            >
+                                <CalendarCheckIcon class="size-3.5" />Book a Session
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Disclaimers -->
+            <div
+                class="space-y-2 border-t border-brown-800 pt-8 text-xs leading-relaxed text-brown-600"
+            >
+                <p>
+                    <strong class="text-brown-500">Disclaimer:</strong> GroundedTutor does not provide financial,
+                    legal, medical, or investment advice. Scam protection and security reviews reduce risk
+                    but cannot guarantee complete protection from scams, fraud, or malware. Backup and file
+                    transfer services cannot guarantee that every file can be recovered or preserved. Customers
+                    must provide access to accounts, passwords, unlock codes, and third-party subscriptions
+                    where needed. Results depend on device condition, account access, storage availability,
+                    and third-party services.
+                </p>
+                <p>
+                    Personal information collected for booking or service records is handled in
+                    accordance with applicable Canadian and Quebec privacy requirements.
+                </p>
+            </div>
+
+            <div class="mt-8 border-t border-brown-800 pt-6 text-center text-xs text-brown-600">
+                Copyright &copy; {new Date().getFullYear()} GroundedTutor. All rights reserved. &middot;
+                Serving Montreal &amp; Nearby Areas
             </div>
         </div>
-    </div>
-</Layout>
+    </footer>
+
+    <!-- ─────────────────────────────────────────────
+         JAVASCRIPT
+    ───────────────────────────────────────────── -->
+    <script>
+        // ── Sticky nav ──────────────────────────────
+        const nav = document.getElementById("site-nav");
+        let lastY = window.scrollY;
+
+        function updateNav() {
+            const y = window.scrollY;
+            if (y > 60) {
+                nav?.classList.add("nav-scrolled");
+            } else {
+                nav?.classList.remove("nav-scrolled");
+            }
+            if (y > lastY && y > 120) {
+                nav?.classList.add("nav-hidden");
+            } else {
+                nav?.classList.remove("nav-hidden");
+            }
+            lastY = y;
+        }
+
+        window.addEventListener("scroll", updateNav, { passive: true });
+        updateNav();
+
+        // ── Mobile menu ───────────────────────────────
+        const btn = document.getElementById("mobile-menu-btn");
+        const menu = document.getElementById("mobile-menu");
+
+        btn?.addEventListener("click", () => {
+            const isOpen = !menu?.classList.contains("hidden");
+            menu?.classList.toggle("hidden", isOpen);
+            btn.setAttribute("aria-expanded", (!isOpen).toString());
+        });
+
+        // Close mobile menu when a link is clicked
+        menu?.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                menu.classList.add("hidden");
+                btn?.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        // ── Scroll reveal ─────────────────────────────
+        const revealEls = document.querySelectorAll(".reveal");
+        const revealObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+        );
+
+        revealEls.forEach((el) => revealObserver.observe(el));
+    </script>
+</MarketingLayout>
