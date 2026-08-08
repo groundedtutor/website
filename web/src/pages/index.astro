@@ -22,14 +22,14 @@ import {
     ArrowRightIcon,
 } from "@lucide/astro";
 
-import { PUBLIC_SITE_PHONE, PUBLIC_CONTACT_EMAIL } from "astro:env/client";
+import { PUBLIC_SITE_PHONE, PUBLIC_BOOKING_EMAIL } from "astro:env/client";
 
 const formattedPhone = PUBLIC_SITE_PHONE.replace(
     /(?:\+1)?(?<areaCode>\d{3})(?<part1>\d{3})(?<part2>\d{4})/g,
     (_, areaCode: string, part1: string, part2: string) => `(${areaCode}) ${part1}-${part2}`
 );
 
-const bookingUrl = import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING || "#contact";
+const bookingUrl = "#contact";
 
 const services = [
     {
@@ -183,106 +183,6 @@ const decisionItems = [
     >
         Skip to main content
     </a>
-
-    <!-- ─────────────────────────────────────────────
-         NAVIGATION
-    ───────────────────────────────────────────── -->
-    <header id="site-nav" class="fixed top-0 right-0 left-0 z-40">
-        <div class="mx-auto max-w-7xl px-5 md:px-8">
-            <nav class="flex h-16 items-center justify-between md:h-20" aria-label="Main navigation">
-                <!-- Logo -->
-                <a href="/" class="shrink-0" aria-label="GroundedTutor — Home">
-                    <span class="text-lg font-bold tracking-tight md:text-xl">
-                        <span class="text-brown-700">Grounded</span><span class="text-brown-950"
-                            >Tutor</span
-                        >
-                    </span>
-                </a>
-
-                <!-- Desktop links -->
-                <ul
-                    class="hidden items-center gap-7 text-sm font-medium text-brown-700 md:flex"
-                    role="list"
-                >
-                    <li>
-                        <a href="#services" class="transition-colors hover:text-brown-950">Services</a
-                        >
-                    </li>
-                    <li>
-                        <a href="#plans" class="transition-colors hover:text-brown-950">Plans</a>
-                    </li>
-                    <li>
-                        <a href="#how-it-works" class="transition-colors hover:text-brown-950"
-                            >How It Works</a
-                        >
-                    </li>
-                    <li>
-                        <a href="#contact" class="transition-colors hover:text-brown-950">Contact</a>
-                    </li>
-                </ul>
-
-                <!-- Desktop CTA -->
-                <a
-                    href={bookingUrl}
-                    class="hidden items-center gap-2 rounded-lg bg-brown-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brown-800 focus-visible:ring-2 focus-visible:ring-brown-700 focus-visible:ring-offset-2 focus-visible:outline-none md:inline-flex"
-                >
-                    <CalendarCheckIcon class="size-4" />
-                    Book a Session
-                </a>
-
-                <!-- Mobile menu toggle -->
-                <button
-                    id="mobile-menu-btn"
-                    class="rounded p-2 text-brown-700 hover:text-brown-900 focus-visible:ring-2 focus-visible:ring-brown-700 focus-visible:ring-offset-2 focus-visible:outline-none md:hidden"
-                    aria-expanded="false"
-                    aria-controls="mobile-menu"
-                    aria-label="Open navigation menu"
-                >
-                    <span class="mb-1.5 block h-0.5 w-6 bg-current transition-all" id="mbar1"></span>
-                    <span class="mb-1.5 block h-0.5 w-6 bg-current transition-all" id="mbar2"></span>
-                    <span class="block h-0.5 w-6 bg-current transition-all" id="mbar3"></span>
-                </button>
-            </nav>
-        </div>
-
-        <!-- Mobile menu panel -->
-        <div
-            id="mobile-menu"
-            class="hidden border-t border-brown-200 bg-brown-50 shadow-lg md:hidden"
-            role="dialog"
-            aria-label="Mobile navigation"
-        >
-            <div class="mx-auto max-w-7xl space-y-1 px-5 py-5">
-                <a
-                    href="#services"
-                    class="block rounded-lg px-4 py-3 font-medium text-brown-800 transition-colors hover:bg-brown-100"
-                    >Services</a
-                >
-                <a
-                    href="#plans"
-                    class="block rounded-lg px-4 py-3 font-medium text-brown-800 transition-colors hover:bg-brown-100"
-                    >Plans</a
-                >
-                <a
-                    href="#how-it-works"
-                    class="block rounded-lg px-4 py-3 font-medium text-brown-800 transition-colors hover:bg-brown-100"
-                    >How It Works</a
-                >
-                <a
-                    href="#contact"
-                    class="block rounded-lg px-4 py-3 font-medium text-brown-800 transition-colors hover:bg-brown-100"
-                    >Contact</a
-                >
-                <div class="pt-3 pb-1">
-                    <a
-                        href={bookingUrl}
-                        class="block w-full rounded-xl bg-brown-700 px-5 py-3.5 text-center font-semibold text-white transition-colors hover:bg-brown-800"
-                        >Book a Session</a
-                    >
-                </div>
-            </div>
-        </div>
-    </header>
 
     <main id="main-content">
         <!-- ─────────────────────────────────────────────
@@ -995,10 +895,10 @@ const decisionItems = [
                             Email Us
                         </p>
                         <a
-                            href=`mailto:${PUBLIC_CONTACT_EMAIL}`
+                            href=`mailto:${PUBLIC_BOOKING_EMAIL}`
                             class="text-base font-semibold break-all text-white transition-colors hover:text-caramel-300"
                         >
-                            {PUBLIC_CONTACT_EMAIL}
+                            {PUBLIC_BOOKING_EMAIL}
                         </a>
                         <p class="mt-1 text-xs text-brown-400">We reply within one business day</p>
                     </div>
@@ -1043,7 +943,7 @@ const decisionItems = [
     ───────────────────────────────────────────── -->
     <footer class="bg-brown-950 text-brown-400">
         <div class="mx-auto max-w-6xl px-5 py-14 md:px-8">
-            <div class="mb-10 grid gap-10 md:grid-cols-3">
+            <div class="mb-10 grid gap-10 md:grid-cols-4">
                 <!-- Brand -->
                 <div>
                     <span class="text-lg font-bold text-white">
@@ -1089,6 +989,25 @@ const decisionItems = [
                     </ul>
                 </div>
 
+                <!-- Policies -->
+                <div>
+                    <p class="mb-4 text-xs font-bold tracking-widest text-brown-500 uppercase">
+                        Policies
+                    </p>
+                    <ul class="space-y-2 text-sm">
+                        <li>
+                            <a href="/privacy" class="transition-colors hover:text-white"
+                                >Privacy Policy</a
+                            >
+                        </li>
+                        <li>
+                            <a href="/password-policy" class="transition-colors hover:text-white"
+                                >Sensitive Access &amp; Password Policy</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+
                 <!-- Contact -->
                 <div>
                     <p class="mb-4 text-xs font-bold tracking-widest text-brown-500 uppercase">
@@ -1097,18 +1016,18 @@ const decisionItems = [
                     <ul class="space-y-2 text-sm">
                         <li>
                             <a
-                                href="tel:+15140000000"
+                                href={`tel:${PUBLIC_SITE_PHONE}`}
                                 class="flex items-center gap-2 transition-colors hover:text-white"
                             >
-                                <PhoneIcon class="size-3.5" />(514) 000-0000
+                                <PhoneIcon class="size-3.5" />{formattedPhone}
                             </a>
                         </li>
                         <li>
                             <a
-                                href="mailto:hello@groundedtutor.online"
+                                href={`mailto:${PUBLIC_BOOKING_EMAIL}`}
                                 class="flex items-center gap-2 transition-colors hover:text-white"
                             >
-                                <MailIcon class="size-3.5" />hello@groundedtutor.online
+                                <MailIcon class="size-3.5" />{PUBLIC_BOOKING_EMAIL}
                             </a>
                         </li>
                         <li class="pt-1">
@@ -1149,50 +1068,7 @@ const decisionItems = [
         </div>
     </footer>
 
-    <!-- ─────────────────────────────────────────────
-         JAVASCRIPT
-    ───────────────────────────────────────────── -->
     <script>
-        // ── Sticky nav ──────────────────────────────
-        const nav = document.getElementById("site-nav");
-        let lastY = window.scrollY;
-
-        function updateNav() {
-            const y = window.scrollY;
-            if (y > 60) {
-                nav?.classList.add("nav-scrolled");
-            } else {
-                nav?.classList.remove("nav-scrolled");
-            }
-            if (y > lastY && y > 120) {
-                nav?.classList.add("nav-hidden");
-            } else {
-                nav?.classList.remove("nav-hidden");
-            }
-            lastY = y;
-        }
-
-        window.addEventListener("scroll", updateNav, { passive: true });
-        updateNav();
-
-        // ── Mobile menu ───────────────────────────────
-        const btn = document.getElementById("mobile-menu-btn");
-        const menu = document.getElementById("mobile-menu");
-
-        btn?.addEventListener("click", () => {
-            const isOpen = !menu?.classList.contains("hidden");
-            menu?.classList.toggle("hidden", isOpen);
-            btn.setAttribute("aria-expanded", (!isOpen).toString());
-        });
-
-        // Close mobile menu when a link is clicked
-        menu?.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
-                menu.classList.add("hidden");
-                btn?.setAttribute("aria-expanded", "false");
-            });
-        });
-
         // ── Scroll reveal ─────────────────────────────
         const revealEls = document.querySelectorAll(".reveal");
         const revealObserver = new IntersectionObserver(

@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @theme {
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -102,4 +103,33 @@ body {
 
 img {
     content-visibility: auto;
+}
+
+/* Policy markdown theme mapped to site palette */
+@utility prose-policy {
+    --tw-prose-body: var(--color-brown-700);
+    --tw-prose-headings: var(--color-brown-900);
+    --tw-prose-lead: var(--color-brown-600);
+    --tw-prose-links: var(--color-caramel-500);
+    --tw-prose-bold: var(--color-brown-900);
+    --tw-prose-counters: var(--color-brown-500);
+    --tw-prose-bullets: var(--color-brown-300);
+    --tw-prose-hr: var(--color-brown-200);
+    --tw-prose-quotes: var(--color-brown-800);
+    --tw-prose-quote-borders: var(--color-brown-300);
+    --tw-prose-captions: var(--color-brown-600);
+    --tw-prose-code: var(--color-brown-900);
+    --tw-prose-pre-code: var(--color-brown-100);
+    --tw-prose-pre-bg: var(--color-brown-900);
+    --tw-prose-th-borders: var(--color-brown-300);
+    --tw-prose-td-borders: var(--color-brown-200);
+
+    & :where(h1, h2, h3, h4) {
+        font-family: var(--font-serif);
+        letter-spacing: -0.01em;
+    }
+
+    & :where(a:hover) {
+        color: var(--color-brown-700);
+    }
 }

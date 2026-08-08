@@ -9,5 +9,8 @@
         "astro": "pnpm --filter @groundedtutor/web astro",
         "preview": "pnpm --filter @groundedtutor/web preview",
         "check": "pnpm -r exec astro check"
+    },
+    "devDependencies": {
+        "web": "^0.0.2"
     }
 }

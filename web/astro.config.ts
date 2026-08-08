@@ -17,9 +17,10 @@ export default defineConfig({
     },
     env: {
         schema: {
-            PUBLIC_SITE_NAME: envField.string({context: "client", access: "public"}),
-            PUBLIC_SITE_PHONE: envField.string({context: "client", access: "public"}),
-            PUBLIC_CONTACT_EMAIL: envField.string({context: "client", access: "public"}),
-        }
-    }
+            PUBLIC_SITE_NAME: envField.string({ context: "client", access: "public" }),
+            PUBLIC_SITE_PHONE: envField.string({ context: "client", access: "public" }),
+            PUBLIC_BOOKING_EMAIL: envField.string({ context: "client", access: "public" }),
+            PUBLIC_CONTACT_EMAIL: envField.string({ context: "client", access: "public" }),
+        },
+    },
 });

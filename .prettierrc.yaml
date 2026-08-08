@@ -4,10 +4,15 @@ tailwindStylesheet: "./web/src/styles/global.css"
 importOrderSideEffects: false
 # importOrder: ["^@(.*)/.*$", "^[./]", "^@/lib/(.*)$", "^[./]"]
 plugins:
-   - "@trivago/prettier-plugin-sort-imports"
-   - "prettier-plugin-astro"
-   - "prettier-plugin-tailwindcss"
+  - "@trivago/prettier-plugin-sort-imports"
+  - "prettier-plugin-astro"
+  - "prettier-plugin-tailwindcss"
+  - "prettier-plugin-markdown-html"
 overrides:
-   - files: "*.astro"
-     options:
-        parser: "astro"
+  - files: "*.astro"
+    options:
+      parser: "astro"
+  - files: "*.mdx"
+    options:
+      parser: "markdown"
+
