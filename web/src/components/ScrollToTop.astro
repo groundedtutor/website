@@ -2,6 +2,7 @@
 import { ChevronUpIcon } from "@lucide/astro";
 
 const buttonId = "scroll-to-top";
+const visiblityClasses = ["translate-y-48", "pointer-events-none"];
 ---
 
 <a
@@ -12,23 +13,22 @@ const buttonId = "scroll-to-top";
     tabindex={-1}
 >
     <ChevronUpIcon aria-hidden="true" class="mx-auto" />
-    <span class="pointer-events-none hidden translate-y-48"> </span>
 
-    <script>
+    <script define:vars={{ visiblityClasses }}>
         const scrollToTop = document.getElementById("scroll-to-top");
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
         function syncVisibility() {
             const isVisible = window.scrollY > 480;
             if (isVisible) {
-                scrollToTop?.classList.remove("translate-y-48", "pointer-events-none");
+                scrollToTop?.classList.remove(...visiblityClasses);
             } else {
-                scrollToTop?.classList.add("translate-y-48", "pointer-events-none");
+                scrollToTop?.classList.add(...visiblityClasses);
             }
         }
 
         scrollToTop?.addEventListener("click", (event) => {
-            event.preventDefault();
+            event.preventDefault(); // Prevent the default anchor behavior
             window.scrollTo({
                 top: 0,
                 behavior: prefersReducedMotion.matches ? "auto" : "smooth",
