@@ -1,6 +1,7 @@
 ---
 import { SEOMetadata } from "astro-seo-metadata";
 import Header from "@components/Header.astro";
+import ScrollToTop from "@components/ScrollToTop.astro";
 import { PUBLIC_SITE_NAME } from "astro:env/client";
 import "../styles/global.css";
 
@@ -39,6 +40,8 @@ const fullTitle = `${pageTitle} | ${PUBLIC_SITE_NAME}`;
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
     <body>
+        <!-- <div id="top" class="sr-only" aria-hidden="true"></div> -->
+        <ScrollToTop />
         <slot name="header">
             <Header />
         </slot>
