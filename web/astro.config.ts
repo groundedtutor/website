@@ -13,7 +13,13 @@ export default defineConfig({
     integrations: [mdx(), sitemap(), icon()],
 
     vite: {
-        plugins: [tailwindcss()],
+        plugins: [
+            tailwindcss({
+                optimize: {
+                    minify: true,
+                },
+            }),
+        ],
     },
     env: {
         schema: {

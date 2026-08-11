@@ -14,7 +14,7 @@ const visiblityClasses = ["translate-y-48", "pointer-events-none"];
 >
     <ChevronUpIcon aria-hidden="true" class="mx-auto" />
 
-    <script define:vars={{ visiblityClasses }}>
+    <script is:inline define:vars={{ visiblityClasses }}>
         const scrollToTop = document.getElementById("scroll-to-top");
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 

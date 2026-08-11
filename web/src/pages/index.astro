@@ -146,14 +146,6 @@ const bookingSteps = [
     },
 ];
 
-const revealDelays = [
-    "reveal-delay-1",
-    "reveal-delay-2",
-    "reveal-delay-3",
-    "reveal-delay-4",
-    "reveal-delay-5",
-];
-
 const decisionItems = [
     { quote: "My computer is slow.", service: "Friendly Tech Help Session", anchor: "#tech-help" },
     {
@@ -215,7 +207,7 @@ const decisionItems = [
                 <div class="max-w-3xl">
                     <!-- Location badge -->
                     <div
-                        class="reveal mb-8 inline-flex items-center gap-2 rounded-full bg-brown-800 px-4 py-1.5 text-sm font-medium text-caramel-300"
+                        class="mb-8 inline-flex reveal items-center gap-2 rounded-full bg-brown-800 px-4 py-1.5 text-sm font-medium text-caramel-300"
                     >
                         <MapPinIcon class="size-4 shrink-0" />
                         <span>Serving Montreal &amp; Nearby Areas</span>
@@ -223,7 +215,7 @@ const decisionItems = [
 
                     <!-- Headline -->
                     <h1
-                        class="reveal reveal-delay-1 mb-6 font-serif text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.12] font-bold text-white"
+                        class="mb-6 reveal font-serif text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.12] font-bold text-white delay-100"
                     >
                         Friendly Tech Help<br />
                         <span class="text-caramel-300">for Older Adults</span><br />
@@ -232,14 +224,14 @@ const decisionItems = [
 
                     <!-- Subheadline -->
                     <p
-                        class="reveal reveal-delay-2 mb-10 max-w-xl text-xl leading-relaxed text-brown-200 md:text-2xl"
+                        class="delay-200ext-2xl mb-10 max-w-xl reveal text-xl leading-relaxed text-brown-200"
                     >
                         Patient, plain-English support at home, by phone, or online. No jargon. No
                         rushing. Just friendly help.
                     </p>
 
                     <!-- CTA buttons -->
-                    <div class="reveal reveal-delay-3 mb-14 flex flex-col gap-4 sm:mb-16 sm:flex-row">
+                    <div class="mb-14 flex reveal flex-col gap-4 delay-300 sm:mb-16 sm:flex-row">
                         <a
                             href={bookingUrl}
                             class="inline-flex items-center justify-center gap-2 rounded-xl bg-caramel-400 px-7 py-4 text-lg font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-caramel-500 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-caramel-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brown-950 focus-visible:outline-none"
@@ -257,7 +249,7 @@ const decisionItems = [
 
                     <!-- Trust badges -->
                     <div
-                        class="reveal reveal-delay-4 flex flex-wrap gap-x-6 gap-y-3 text-sm text-brown-300"
+                        class="flex reveal flex-wrap gap-x-6 gap-y-3 text-sm text-brown-300 delay-400"
                     >
                         <div class="flex items-center gap-2">
                             <HouseIcon class="size-4 shrink-0 text-caramel-300" />
@@ -285,7 +277,7 @@ const decisionItems = [
         ───────────────────────────────────────────── -->
         <section class="bg-white py-20 md:py-28">
             <div class="mx-auto max-w-6xl px-5 md:px-8">
-                <div class="reveal mb-14 text-center">
+                <div class="mb-14 reveal text-center">
                     <h2
                         class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brown-900"
                     >
@@ -299,7 +291,7 @@ const decisionItems = [
 
                 <div class="grid gap-8 md:grid-cols-3">
                     <div
-                        class="reveal reveal-delay-1 rounded-2xl bg-brown-50 p-8 text-center transition-colors hover:bg-brown-100"
+                        class="reveal rounded-2xl bg-brown-50 p-8 text-center transition-colors delay-100 hover:bg-brown-100"
                     >
                         <div
                             class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brown-100 text-brown-700"
@@ -316,7 +308,7 @@ const decisionItems = [
                     </div>
 
                     <div
-                        class="reveal reveal-delay-2 rounded-2xl bg-brown-50 p-8 text-center transition-colors hover:bg-brown-100"
+                        class="delay-200r:bg-brown-100 reveal rounded-2xl bg-brown-50 p-8 text-center transition-colors"
                     >
                         <div
                             class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brown-100 text-brown-700"
@@ -331,7 +323,7 @@ const decisionItems = [
                     </div>
 
                     <div
-                        class="reveal reveal-delay-3 rounded-2xl bg-brown-50 p-8 text-center transition-colors hover:bg-brown-100"
+                        class="reveal rounded-2xl bg-brown-50 p-8 text-center transition-colors delay-300 hover:bg-brown-100"
                     >
                         <div
                             class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brown-100 text-brown-700"
@@ -353,7 +345,7 @@ const decisionItems = [
         ───────────────────────────────────────────── -->
         <section id="services" class="bg-brown-50 py-20 md:py-28">
             <div class="mx-auto max-w-6xl px-5 md:px-8">
-                <div class="reveal mb-14 text-center">
+                <div class="mb-14 reveal text-center">
                     <h2
                         class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brown-900"
                     >
@@ -373,7 +365,7 @@ const decisionItems = [
                         services.map((s, i) => (
                             <div
                                 id={s.id}
-                                class={`reveal ${revealDelays[i] ?? ""} overflow-hidden rounded-2xl border border-brown-100 bg-white shadow-sm transition-shadow hover:shadow-md`}
+                                class={`reveal overflow-hidden rounded-2xl border border-brown-100 bg-white shadow-sm transition-shadow delay-150 hover:shadow-md`}
                             >
                                 <div class={`h-1.5 ${s.accentClass}`} />
                                 <div class="p-7 md:p-8">
@@ -432,7 +424,7 @@ const decisionItems = [
         ───────────────────────────────────────────── -->
         <section id="plans" class="bg-white py-20 md:py-28">
             <div class="mx-auto max-w-5xl px-5 md:px-8">
-                <div class="reveal mb-14 text-center">
+                <div class="mb-14 reveal text-center">
                     <h2
                         class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brown-900"
                     >
@@ -447,7 +439,7 @@ const decisionItems = [
                 <div class="grid gap-8 md:grid-cols-2">
                     <!-- Technology Confidence Plan -->
                     <div
-                        class="reveal reveal-delay-1 relative overflow-hidden rounded-2xl bg-brown-950 p-8 text-white"
+                        class="relative reveal overflow-hidden rounded-2xl bg-brown-950 p-8 text-white delay-100"
                     >
                         <div
                             class="pointer-events-none absolute top-0 right-0 h-40 w-40 translate-x-10 -translate-y-10 rounded-full bg-caramel-400 opacity-10"
@@ -499,7 +491,7 @@ const decisionItems = [
 
                     <!-- Backup & Safety Check Plan -->
                     <div
-                        class="reveal reveal-delay-2 relative rounded-2xl border-2 border-brown-200 bg-brown-50 p-8"
+                        class="relative reveal rounded-2xl border-2 border-brown-200 bg-brown-50 p-8 delay-200"
                     >
                         <div class="mb-5 flex items-center gap-3">
                             <div
@@ -557,7 +549,7 @@ const decisionItems = [
         ───────────────────────────────────────────── -->
         <section id="how-it-works" class="bg-brown-100 py-20 md:py-28">
             <div class="mx-auto max-w-6xl px-5 md:px-8">
-                <div class="reveal mb-16 text-center">
+                <div class="mb-16 reveal text-center">
                     <h2
                         class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brown-900"
                     >
@@ -571,7 +563,7 @@ const decisionItems = [
                 <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
                     {
                         bookingSteps.map((step, i) => (
-                            <div class={`reveal ${revealDelays[i] ?? ""}`}>
+                            <div class:list={["reveal", `delay-${(i + 1) * 100}`]}>
                                 <div class="flex items-start gap-5 lg:flex-col lg:items-center lg:text-center">
                                     <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brown-700 text-xl font-bold text-white shadow-sm">
                                         {step.number}
@@ -600,7 +592,7 @@ const decisionItems = [
         ───────────────────────────────────────────── -->
         <section class="bg-white py-20 md:py-28">
             <div class="mx-auto max-w-6xl px-5 md:px-8">
-                <div class="reveal mb-14 text-center">
+                <div class="mb-14 reveal text-center">
                     <h2
                         class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brown-900"
                     >
@@ -615,9 +607,7 @@ const decisionItems = [
 
                 <div class="mb-14 grid gap-8 md:grid-cols-2">
                     <!-- Remote -->
-                    <div
-                        class="reveal reveal-delay-1 rounded-2xl border border-brown-100 bg-brown-50 p-8"
-                    >
+                    <div class="reveal rounded-2xl border border-brown-100 bg-brown-50 p-8 delay-100">
                         <div class="mb-6 flex items-center gap-3">
                             <div
                                 class="flex h-12 w-12 items-center justify-center rounded-xl bg-brown-100 text-brown-700"
@@ -649,9 +639,7 @@ const decisionItems = [
                     </div>
 
                     <!-- In-Home -->
-                    <div
-                        class="reveal reveal-delay-2 rounded-2xl border border-brown-100 bg-brown-50 p-8"
-                    >
+                    <div class="reveal rounded-2xl border border-brown-100 bg-brown-50 p-8 delay-200">
                         <div class="mb-6 flex items-center gap-3">
                             <div
                                 class="flex h-12 w-12 items-center justify-center rounded-xl bg-brown-100 text-brown-700"
@@ -685,7 +673,7 @@ const decisionItems = [
 
                 <!-- Service area note -->
                 <div
-                    class="reveal flex flex-col items-start gap-5 rounded-2xl border border-caramel-200 bg-caramel-100 p-7 md:flex-row md:items-center"
+                    class="flex reveal flex-col items-start gap-5 rounded-2xl border border-caramel-200 bg-caramel-100 p-7 md:flex-row md:items-center"
                 >
                     <div
                         class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-caramel-200 text-caramel-500"
@@ -716,7 +704,7 @@ const decisionItems = [
         ───────────────────────────────────────────── -->
         <section class="bg-brown-900 py-20 md:py-28">
             <div class="mx-auto max-w-6xl px-5 md:px-8">
-                <div class="reveal mb-14 text-center">
+                <div class="mb-14 reveal text-center">
                     <div
                         class="mb-5 inline-flex items-center gap-2 text-sm font-medium text-caramel-300"
                     >
@@ -768,7 +756,10 @@ const decisionItems = [
                             },
                         ].map((item, i) => (
                             <div
-                                class={`reveal ${revealDelays[i % 3] ?? ""} rounded-2xl bg-brown-800 p-6`}
+                                class:list={[
+                                    "reveal rounded-2xl bg-brown-800 p-6",
+                                    `delay-${(i + 1) * 100}`,
+                                ]}
                             >
                                 <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brown-700 text-caramel-300">
                                     <item.icon class="size-5" />
@@ -787,7 +778,7 @@ const decisionItems = [
         ───────────────────────────────────────────── -->
         <section id="decision-helper" class="bg-brown-50 py-20 md:py-28">
             <div class="mx-auto max-w-4xl px-5 md:px-8">
-                <div class="reveal mb-14 text-center">
+                <div class="mb-14 reveal text-center">
                     <div
                         class="mb-5 inline-flex items-center gap-2 text-sm font-medium text-brown-600"
                     >
@@ -810,7 +801,10 @@ const decisionItems = [
                         decisionItems.map((item, i) => (
                             <a
                                 href={item.anchor}
-                                class={`reveal ${revealDelays[i] ?? ""} group flex items-center justify-between gap-4 rounded-xl border border-brown-200 bg-white px-6 py-5 transition-all hover:border-brown-400 hover:bg-brown-50`}
+                                class:list={[
+                                    "group flex reveal items-center justify-between gap-4 rounded-xl border border-brown-200 bg-white px-6 py-5 transition-all hover:border-brown-400 hover:bg-brown-50",
+                                    `delay-${(i + 1) * 100}`,
+                                ]}
                             >
                                 <div class="flex items-start gap-4">
                                     <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brown-100 text-sm font-bold text-brown-700 transition-colors group-hover:bg-brown-200">
@@ -829,7 +823,7 @@ const decisionItems = [
                     }
                 </div>
 
-                <div class="reveal mt-10 text-center">
+                <div class="mt-10 reveal text-center">
                     <p class="mb-5 text-brown-600">Still not sure? We're happy to help you choose.</p>
                     <a
                         href="#contact"
@@ -860,7 +854,7 @@ const decisionItems = [
 
                 <div class="mb-12 grid gap-5 sm:grid-cols-3">
                     <!-- Phone -->
-                    <div class="reveal reveal-delay-1 rounded-2xl bg-brown-700 p-6 text-center">
+                    <div class="reveal rounded-2xl bg-brown-700 p-6 text-center delay-100">
                         <div
                             class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brown-600 text-caramel-300"
                         >
@@ -883,7 +877,7 @@ const decisionItems = [
                     </div>
 
                     <!-- Email -->
-                    <div class="reveal reveal-delay-2 rounded-2xl bg-brown-700 p-6 text-center">
+                    <div class="reveal rounded-2xl bg-brown-700 p-6 text-center delay-200">
                         <div
                             class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brown-600 text-caramel-300"
                         >
@@ -904,7 +898,7 @@ const decisionItems = [
                     </div>
 
                     <!-- Book Online -->
-                    <div class="reveal reveal-delay-3 rounded-2xl bg-brown-700 p-6 text-center">
+                    <div class="reveal rounded-2xl bg-brown-700 p-6 text-center delay-300">
                         <div
                             class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brown-600 text-caramel-300"
                         >
@@ -1062,8 +1056,8 @@ const decisionItems = [
             </div>
 
             <div class="mt-8 border-t border-brown-800 pt-6 text-center text-xs text-brown-600">
-                Copyright &copy; {new Date().getFullYear()} GroundedTutor. All rights reserved. &middot;
-                Serving Montreal &amp; Nearby Areas
+                Copyright &copy; {new Date().getFullYear()}
+                {import.meta.env.PUBLIC_SITE_NAME}. All rights reserved.
             </div>
         </div>
     </footer>
@@ -1075,7 +1069,7 @@ const decisionItems = [
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
+                        entry.target.classList.add("reveal-visible");
                         revealObserver.unobserve(entry.target);
                     }
                 });

@@ -3,6 +3,18 @@
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
+@source inline("delay-{100..900..100}");
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+    @apply box-border scroll-smooth bg-brown-50 font-sans leading-relaxed text-brown-950 antialiased;
+}
+
+img {
+    content-visibility: auto;
+}
+
 @theme {
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
     --font-serif: "Lora", Georgia, "Times New Roman", serif;
@@ -26,83 +38,16 @@
     --color-caramel-500: #b86e28;
 }
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
+@utility reveal {
+    @apply translate-y-7 opacity-0 transition-[opacity,translate]! duration-700 ease-in-out will-change-transform;
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: var(--font-sans);
-    background-color: var(--color-brown-50);
-    color: var(--color-brown-950);
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* ── Scroll-reveal animations ── */
-.reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition:
-        opacity 0.65s ease,
-        transform 0.65s ease;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.reveal-delay-1 {
-    transition-delay: 0.1s;
-}
-.reveal-delay-2 {
-    transition-delay: 0.2s;
-}
-.reveal-delay-3 {
-    transition-delay: 0.3s;
-}
-.reveal-delay-4 {
-    transition-delay: 0.4s;
-}
-.reveal-delay-5 {
-    transition-delay: 0.5s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
+    @variant motion-reduce {
+        @apply transform-none opacity-100 transition-none!;
     }
 }
 
-/* ── Sticky nav state ── */
-#site-nav {
-    transition:
-        background-color 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.35s ease;
-}
-
-#site-nav.nav-scrolled {
-    background-color: rgba(251, 247, 242, 0.97);
-    box-shadow: 0 1px 24px rgba(28, 16, 8, 0.08);
-    backdrop-filter: blur(8px);
-}
-
-#site-nav.nav-hidden {
-    transform: translateY(-100%);
-}
-
-img {
-    content-visibility: auto;
+@utility reveal-visible {
+    @apply translate-y-0 opacity-100;
 }
 
 /* Policy markdown theme mapped to site palette */
