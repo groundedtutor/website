@@ -1,5 +1,6 @@
 ---
-import { CalendarCheckIcon } from "@lucide/astro";
+import { CalendarCheckIcon, MonitorIcon, MoonIcon, SunIcon } from "@lucide/astro";
+import ThemeToggle from "@components/ThemeToggle.astro";
 
 export interface Props {
     bookingUrl?: string;
@@ -15,13 +16,14 @@ const { bookingUrl = import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING } = Astro.prop
     @reference "../styles/global.css";
     /* ── Sticky nav state ── */
     #site-nav.nav-scrolled {
-        @apply bg-brown-50/95 shadow shadow-brown-950/10 backdrop-blur;
+        @apply bg-brand-50/95 shadow shadow-brand-950/10 backdrop-blur;
     }
 
     #site-nav.nav-hidden {
         @apply -translate-y-full;
     }
 </style>
+
 <header
     id="site-nav"
     class="fixed top-0 right-0 left-0 z-40 transition-[background-color,box-shadow,transform,translate] duration-300 ease-in-out"
@@ -31,7 +33,7 @@ const { bookingUrl = import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING } = Astro.prop
             <!-- Logo -->
             <a href="/" class="shrink-0" aria-label="GroundedTutor — Home">
                 <span class="text-lg font-bold tracking-tight md:text-xl">
-                    <span class="text-brown-700">Grounded</span><span class="text-brown-950"
+                    <span class="text-brand-700">Grounded</span><span class="text-brand-950"
                         >Tutor</span
                     >
                 </span>
@@ -39,81 +41,88 @@ const { bookingUrl = import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING } = Astro.prop
 
             <!-- Desktop links -->
             <ul
-                class="hidden items-center gap-7 text-sm font-medium text-brown-700 md:flex"
+                class="hidden items-center gap-7 text-sm font-medium text-brand-700 md:flex"
                 role="list"
             >
                 <li>
-                    <a href="/#services" class="transition-colors hover:text-brown-950">Services</a>
+                    <a href="/#services" class="transition-colors hover:text-brand-950">Services</a>
                 </li>
                 <li>
-                    <a href="/#plans" class="transition-colors hover:text-brown-950">Plans</a>
+                    <a href="/#plans" class="transition-colors hover:text-brand-950">Plans</a>
                 </li>
                 <li>
-                    <a href="/#how-it-works" class="transition-colors hover:text-brown-950"
+                    <a href="/#how-it-works" class="transition-colors hover:text-brand-950"
                         >How It Works</a
                     >
                 </li>
                 <li>
-                    <a href="/#contact" class="transition-colors hover:text-brown-950">Contact</a>
+                    <a href="/#contact" class="transition-colors hover:text-brand-950">Contact</a>
                 </li>
             </ul>
 
-            <!-- Desktop CTA -->
+            <!-- Accessibility controls + primary action -->
+            <ThemeToggle classNames="hidden md:flex" />
+
             <a
                 href={bookingUrl}
-                class="hidden items-center gap-2 rounded-lg bg-brown-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brown-800 focus-visible:ring-2 focus-visible:ring-brown-700 focus-visible:ring-offset-2 focus-visible:outline-none md:inline-flex"
+                role="button"
+                class="bg-brown-700 hover:bg-brown-800 focus-visible:ring-brown-700 hidden items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none md:inline-flex"
             >
                 <CalendarCheckIcon class="size-4" />
                 Book a Session
             </a>
 
-            <!-- Mobile menu toggle -->
-            <button
-                id="mobile-menu-btn"
-                class="rounded p-2 text-brown-700 hover:text-brown-900 focus-visible:ring-2 focus-visible:ring-brown-700 focus-visible:ring-offset-2 focus-visible:outline-none md:hidden"
-                aria-expanded="false"
-                aria-controls="mobile-menu"
-                aria-label="Open navigation menu"
-            >
-                <span class="mb-1.5 block h-0.5 w-6 bg-current transition-all" id="mbar1"></span>
-                <span class="mb-1.5 block h-0.5 w-6 bg-current transition-all" id="mbar2"></span>
-                <span class="block h-0.5 w-6 bg-current transition-all" id="mbar3"></span>
-            </button>
+            <!-- Mobile controls -->
+            <div class="flex items-center gap-2 md:hidden">
+                <ThemeToggle classNames="md:hidden" />
+
+                <button
+                    id="mobile-menu-btn"
+                    class="rounded p-2 text-brand-700 hover:text-brand-900 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 focus-visible:outline-none"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                    aria-label="Open navigation menu"
+                >
+                    <span class="mb-1.5 block h-0.5 w-6 bg-current transition-all" id="mbar1"></span>
+                    <span class="mb-1.5 block h-0.5 w-6 bg-current transition-all" id="mbar2"></span>
+                    <span class="block h-0.5 w-6 bg-current transition-all" id="mbar3"></span>
+                </button>
+            </div>
         </nav>
     </div>
 
     <!-- Mobile menu panel -->
     <div
         id="mobile-menu"
-        class="hidden border-t border-brown-200 bg-brown-50 shadow-lg md:hidden"
+        class="hidden border-t border-brand-200 bg-brand-50 shadow-lg md:hidden"
         role="dialog"
         aria-label="Mobile navigation"
     >
         <div class="mx-auto max-w-7xl space-y-1 px-5 py-5">
             <a
                 href="/#services"
-                class="block rounded-lg px-4 py-3 font-medium text-brown-800 transition-colors hover:bg-brown-100"
+                class="block rounded-lg px-4 py-3 font-medium text-brand-800 transition-colors hover:bg-brand-100"
                 >Services</a
             >
             <a
                 href="/#plans"
-                class="block rounded-lg px-4 py-3 font-medium text-brown-800 transition-colors hover:bg-brown-100"
+                class="block rounded-lg px-4 py-3 font-medium text-brand-800 transition-colors hover:bg-brand-100"
                 >Plans</a
             >
             <a
                 href="/#how-it-works"
-                class="block rounded-lg px-4 py-3 font-medium text-brown-800 transition-colors hover:bg-brown-100"
+                class="block rounded-lg px-4 py-3 font-medium text-brand-800 transition-colors hover:bg-brand-100"
                 >How It Works</a
             >
             <a
                 href="/#contact"
-                class="block rounded-lg px-4 py-3 font-medium text-brown-800 transition-colors hover:bg-brown-100"
+                class="block rounded-lg px-4 py-3 font-medium text-brand-800 transition-colors hover:bg-brand-100"
                 >Contact</a
             >
             <div class="pt-3 pb-1">
                 <a
                     href={bookingUrl}
-                    class="block w-full rounded-xl bg-brown-700 px-5 py-3.5 text-center font-semibold text-white transition-colors hover:bg-brown-800"
+                    class="block w-full rounded-xl bg-brand-500 px-5 py-3.5 text-center font-semibold text-white transition-colors hover:bg-brand-600 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
                     >Book a Session</a
                 >
             </div>

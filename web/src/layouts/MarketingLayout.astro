@@ -3,6 +3,8 @@ import { SEOMetadata } from "astro-seo-metadata";
 import Header from "@components/Header.astro";
 import ScrollToTop from "@components/ScrollToTop.astro";
 import { PUBLIC_SITE_NAME } from "astro:env/client";
+import { themeStorageKey } from "@utils/theme-mode";
+
 import "../styles/global.css";
 
 export interface Props {
@@ -36,6 +38,27 @@ const fullTitle = `${pageTitle} | ${PUBLIC_SITE_NAME}`;
             type="website"
             astroGenerator={true}
         />
+        <script is:inline define:vars={{ themeStorageKey }}>
+            (() => {
+                let mode = "auto";
+
+                try {
+                    mode = localStorage.getItem(themeStorageKey)?.toLowerCase();
+                } catch {}
+
+                if (!["light", "dark"].includes(mode)) {
+                    mode = "auto";
+                }
+                document.documentElement.setAttribute("data-theme-mode", mode);
+
+                try {
+                    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+                    if (mode === "dark" || (mode === "auto" && prefersDark.matches)) {
+                        document.documentElement.classList.add("dark");
+                    }
+                } catch {}
+            })();
+        </script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>

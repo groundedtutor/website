@@ -1,0 +1,98 @@
+---
+import { SunIcon, MoonIcon, MonitorIcon } from "@lucide/astro";
+
+interface Props {
+    classNames?: string;
+}
+
+const { classNames } = Astro.props;
+---
+
+<style>
+    @reference "../styles/global.css";
+
+    .theme-option[data-active="true"] {
+        @apply bg-brand-700 text-white shadow-sm;
+    }
+
+    .theme-option[data-active="false"] {
+        @apply text-brand-700 hover:text-brand-900;
+    }
+</style>
+
+<div class:list={["flex items-center gap-2", classNames]} aria-label="Accessibility options">
+    <span class="sr-only">Accessibility options</span>
+    <div
+        class="inline-flex items-center gap-1 rounded-lg border border-brand-200 bg-brand-100/60 p-1"
+        role="group"
+        aria-label="Theme mode"
+    >
+        <button
+            type="button"
+            data-theme-mode="light"
+            data-active="false"
+            class="theme-option inline-flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+            aria-label="Use light theme"
+            aria-pressed="false"
+        >
+            <SunIcon class="size-3.5" />
+            Light
+        </button>
+        <button
+            type="button"
+            data-theme-mode="dark"
+            data-active="false"
+            class="theme-option inline-flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+            aria-label="Use dark theme"
+            aria-pressed="false"
+        >
+            <MoonIcon class="size-3.5" />
+            Dark
+        </button>
+        <button
+            type="button"
+            data-theme-mode="auto"
+            data-active="false"
+            class="theme-option inline-flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+            aria-label="Use automatic system theme"
+            aria-pressed="false"
+        >
+            <MonitorIcon class="size-3.5" />
+            Auto
+        </button>
+    </div>
+</div>
+
+<script>
+    import { readThemeMode, setThemeMode } from "@utils/theme-mode";
+
+    const themeButtons = Array.from(
+        document.querySelectorAll<HTMLButtonElement>("button[data-theme-mode]")
+    );
+
+    function updateThemeControls(mode: string) {
+        themeButtons.forEach((button) => {
+            const active = button.dataset.themeMode === mode;
+            button.dataset.active = active ? "true" : "false";
+            button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+    }
+
+    themeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const mode = button.dataset.themeMode!;
+            setThemeMode(mode);
+            updateThemeControls(readThemeMode());
+        });
+    });
+
+    try {
+        updateThemeControls(readThemeMode());
+
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+            const currentMode = readThemeMode();
+            setThemeMode(currentMode, e.matches);
+            updateThemeControls(currentMode);
+        });
+    } catch {}
+</script>
