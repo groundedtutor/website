@@ -38,7 +38,7 @@
 /* Dark theme: deeper backgrounds with lighter text and accents for readable contrast */
 .dark {
     color-scheme: dark;
-    /* --color-brand-50: oklch(0.15 0.024 33);
+    --color-brand-50: oklch(0.15 0.024 33);
     --color-brand-100: oklch(0.2 0.031 36);
     --color-brand-200: oklch(0.28 0.048 43);
     --color-brand-300: oklch(0.37 0.066 52);
@@ -48,11 +48,37 @@
     --color-brand-700: oklch(0.78 0.093 72);
     --color-brand-800: oklch(0.86 0.079 74);
     --color-brand-900: oklch(0.92 0.06 77);
-    --color-brand-950: oklch(0.97 0.037 85); */
+    --color-brand-950: oklch(0.97 0.037 85);
 }
 
 img {
     content-visibility: auto;
+}
+
+/* ── Global focus-visible ring ── */
+:focus-visible {
+    outline: 2px solid var(--color-primary-500, oklch(0.72 0.109 68.8));
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ── Body link defaults: always underline for non-color-only cues ── */
+main a:not([class]),
+.prose a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* ── Reduced-motion: disable all transitions and animations ── */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 @utility reveal {
@@ -69,29 +95,33 @@ img {
 
 /* Policy markdown theme mapped to site palette */
 @utility prose-policy {
-    /* --tw-prose-body: var(--color-brand-700);
-    --tw-prose-headings: var(--color-brand-900);
-    --tw-prose-lead: var(--color-brand-600);
+    --tw-prose-body: var(--color-brand-800);
+    --tw-prose-headings: var(--color-brand-950);
+    --tw-prose-lead: var(--color-brand-700);
     --tw-prose-links: var(--color-brand-700);
     --tw-prose-bold: var(--color-brand-950);
-    --tw-prose-counters: var(--color-brand-500);
-    --tw-prose-bullets: var(--color-brand-400);
+    --tw-prose-counters: var(--color-brand-600);
+    --tw-prose-bullets: var(--color-brand-500);
     --tw-prose-hr: var(--color-brand-200);
     --tw-prose-quotes: var(--color-brand-800);
-    --tw-prose-quote-borders: var(--color-brand-300);
+    --tw-prose-quote-borders: var(--color-brand-400);
     --tw-prose-captions: var(--color-brand-600);
     --tw-prose-code: var(--color-brand-900);
     --tw-prose-pre-code: var(--color-brand-100);
     --tw-prose-pre-bg: var(--color-brand-900);
     --tw-prose-th-borders: var(--color-brand-300);
-    --tw-prose-td-borders: var(--color-brand-200); */
+    --tw-prose-td-borders: var(--color-brand-200);
 
     & :where(h1, h2, h3, h4) {
         font-family: var(--font-serif);
         letter-spacing: -0.01em;
     }
 
+    & :where(a) {
+        text-underline-offset: 3px;
+    }
+
     & :where(a:hover) {
-        color: var(--color-brand-800);
+        color: var(--color-brand-900);
     }
 }

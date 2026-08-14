@@ -458,7 +458,7 @@ const decisionItems = [
 
                 <div class="grid gap-6 md:grid-cols-2">
                     <article
-                        class="bg-surface-900-50 relative reveal overflow-hidden rounded-[1.9rem] border border-surface-700/80 p-8 text-surface-50 shadow-[0_30px_90px_rgba(15,23,42,0.18)] delay-100"
+                        class="bg-surface-900-50 relative reveal overflow-hidden rounded-[1.9rem] border border-surface-700/80 p-8 text-surface-50-950 shadow-[0_30px_90px_rgba(15,23,42,0.18)] delay-100"
                     >
                         <div
                             class="pointer-events-none absolute -top-8 right-0 h-40 w-40 rounded-full bg-primary-400/15 blur-2xl"
@@ -478,7 +478,7 @@ const decisionItems = [
                                 </span>
                             </div>
 
-                            <h3 class="mb-3 text-2xl font-bold text-surface-50">
+                            <h3 class="mb-3 text-2xl font-bold text-surface-50-950">
                                 Technology Confidence Plan
                             </h3>
                             <div class="mb-6 flex items-end gap-2">
@@ -746,7 +746,7 @@ const decisionItems = [
                         <span class="tracking-[0.2em] uppercase">Privacy &amp; Trust</span>
                     </div>
                     <h2
-                        class="mb-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-surface-50"
+                        class="mb-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-surface-50-950"
                     >
                         Your privacy and safety come first
                     </h2>
@@ -798,7 +798,7 @@ const decisionItems = [
                                 <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-700 text-primary-200">
                                     <item.icon class="size-5" />
                                 </div>
-                                <h3 class="mb-2 text-base font-bold text-surface-50">{item.title}</h3>
+                                <h3 class="mb-2 text-base font-bold text-surface-50-950">{item.title}</h3>
                                 <p class="text-sm leading-relaxed text-surface-300-700">
                                     {item.desc}
                                 </p>
@@ -838,7 +838,7 @@ const decisionItems = [
                             <a
                                 href={item.anchor}
                                 class:list={[
-                                    "group flex reveal items-center justify-between gap-4 rounded-3xl border border-surface-200/70 bg-surface-50-950 px-6 py-5 shadow-[0_18px_42px_rgba(84,59,35,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-300 hover:bg-surface-100-900",
+                                    "group flex reveal items-center justify-between gap-4 rounded-3xl border border-surface-200/70 bg-surface-50-950 px-6 py-5 shadow-[0_18px_42px_rgba(84,59,35,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-300 hover:bg-surface-100-900 focus-visible:border-primary-500 focus-visible:outline-2 focus-visible:outline-primary-500 focus-visible:outline-offset-2",
                                     `delay-${(i + 1) * 100}`,
                                 ]}
                             >
@@ -882,7 +882,7 @@ const decisionItems = [
             <div class="mx-auto max-w-4xl px-5 text-center md:px-8">
                 <div class="reveal">
                     <h2
-                        class="mb-5 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-surface-50"
+                        class="mb-5 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-surface-50-950"
                     >
                         Ready for friendly tech help?
                     </h2>
@@ -897,6 +897,7 @@ const decisionItems = [
                     <div class="reveal rounded-2xl bg-primary-700 p-6 text-center delay-100">
                         <div
                             class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-primary-300"
+                            aria-hidden="true"
                         >
                             <PhoneIcon class="size-6" />
                         </div>
@@ -907,19 +908,20 @@ const decisionItems = [
                         </p>
                         <a
                             href=`tel:${PUBLIC_SITE_PHONE}`
-                            class="text-xl font-bold text-white transition-colors hover:text-primary-300"
+                            class="text-xl font-bold text-white transition-colors hover:text-primary-200 focus-visible:text-primary-200 focus-visible:underline focus-visible:outline-none"
                         >
                             {formattedPhone}
                         </a>
-                        <p class="mt-1 text-xs text-primary-400">Mon-Friday, 4 pm - 8 pm</p>
-                        <p class="mt-1 text-xs text-primary-400">Sat, 8 am - 8 pm</p>
-                        <p class="mt-1 text-xs text-primary-400">Sun, 1 pm - 6 pm</p>
+                        <p class="mt-1 text-xs text-primary-200">Mon-Friday, 4 pm - 8 pm</p>
+                        <p class="mt-1 text-xs text-primary-200">Sat, 8 am - 8 pm</p>
+                        <p class="mt-1 text-xs text-primary-200">Sun, 1 pm - 6 pm</p>
                     </div>
 
                     <!-- Email -->
                     <div class="reveal rounded-2xl bg-primary-700 p-6 text-center delay-200">
                         <div
                             class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-primary-300"
+                            aria-hidden="true"
                         >
                             <MailIcon class="size-6" />
                         </div>
@@ -930,17 +932,18 @@ const decisionItems = [
                         </p>
                         <a
                             href=`mailto:${PUBLIC_BOOKING_EMAIL}`
-                            class="text-base font-semibold break-all text-white transition-colors hover:text-primary-300"
+                            class="break-all text-base font-semibold text-white transition-colors hover:text-primary-200 focus-visible:text-primary-200 focus-visible:underline focus-visible:outline-none"
                         >
                             {PUBLIC_BOOKING_EMAIL}
                         </a>
-                        <p class="mt-1 text-xs text-primary-400">We reply within one business day</p>
+                        <p class="mt-1 text-xs text-primary-200">We reply within one business day</p>
                     </div>
 
                     <!-- Book Online -->
                     <div class="reveal rounded-2xl bg-primary-700 p-6 text-center delay-300">
                         <div
                             class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-primary-300"
+                            aria-hidden="true"
                         >
                             <CalendarCheckIcon class="size-6" />
                         </div>
@@ -951,11 +954,11 @@ const decisionItems = [
                         </p>
                         <a
                             href={bookingUrl}
-                            class="text-base font-semibold text-white transition-colors hover:text-primary-300"
+                            class="text-base font-semibold text-white transition-colors hover:text-primary-200 focus-visible:text-primary-200 focus-visible:underline focus-visible:outline-none"
                         >
                             Schedule a Session
                         </a>
-                        <p class="mt-1 text-xs text-primary-400">Choose a time that works for you</p>
+                        <p class="mt-1 text-xs text-primary-200">Choose a time that works for you</p>
                     </div>
                 </div>
 
@@ -980,8 +983,8 @@ const decisionItems = [
             <div class="mb-10 grid gap-10 md:grid-cols-4">
                 <!-- Brand -->
                 <div>
-                    <span class="text-lg font-bold text-white">
-                        <span class="text-primary-300">Grounded</span>Tutor
+                    <span class="text-lg font-bold text-surface-50-950">
+                        <span class="text-primary-300-700">Grounded</span>Tutor
                     </span>
                     <p class="mt-3 text-sm leading-relaxed text-surface-400-600">
                         Friendly, patient tech help for older adults in Montreal. In-home, by phone,
@@ -996,27 +999,27 @@ const decisionItems = [
                     </p>
                     <ul class="space-y-2 text-sm">
                         <li>
-                            <a href="#tech-help" class="transition-colors hover:text-white"
+                            <a href="#tech-help" class="underline-offset-2 transition-colors hover:text-surface-50-950 hover:underline focus-visible:text-surface-50-950 focus-visible:underline focus-visible:outline-none"
                                 >Friendly Tech Help Session</a
                             >
                         </li>
                         <li>
-                            <a href="#device-setup" class="transition-colors hover:text-white"
+                            <a href="#device-setup" class="underline-offset-2 transition-colors hover:text-surface-50-950 hover:underline focus-visible:text-surface-50-950 focus-visible:underline focus-visible:outline-none"
                                 >New Device Setup</a
                             >
                         </li>
                         <li>
-                            <a href="#safety" class="transition-colors hover:text-white"
+                            <a href="#safety" class="underline-offset-2 transition-colors hover:text-surface-50-950 hover:underline focus-visible:text-surface-50-950 focus-visible:underline focus-visible:outline-none"
                                 >Online Safety &amp; Scam Protection</a
                             >
                         </li>
                         <li>
-                            <a href="#backup" class="transition-colors hover:text-white"
+                            <a href="#backup" class="underline-offset-2 transition-colors hover:text-surface-50-950 hover:underline focus-visible:text-surface-50-950 focus-visible:underline focus-visible:outline-none"
                                 >Photo, File &amp; Backup Organization</a
                             >
                         </li>
                         <li>
-                            <a href="#plans" class="transition-colors hover:text-white"
+                            <a href="#plans" class="underline-offset-2 transition-colors hover:text-surface-50-950 hover:underline focus-visible:text-surface-50-950 focus-visible:underline focus-visible:outline-none"
                                 >Ongoing Support Plans</a
                             >
                         </li>
@@ -1030,12 +1033,12 @@ const decisionItems = [
                     </p>
                     <ul class="space-y-2 text-sm">
                         <li>
-                            <a href="/privacy" class="transition-colors hover:text-white"
+                            <a href="/privacy" class="underline-offset-2 transition-colors hover:text-surface-50-950 hover:underline focus-visible:text-surface-50-950 focus-visible:underline focus-visible:outline-none"
                                 >Privacy Policy</a
                             >
                         </li>
                         <li>
-                            <a href="/password-policy" class="transition-colors hover:text-white"
+                            <a href="/password-policy" class="underline-offset-2 transition-colors hover:text-surface-50-950 hover:underline focus-visible:text-surface-50-950 focus-visible:underline focus-visible:outline-none"
                                 >Sensitive Access &amp; Password Policy</a
                             >
                         </li>
@@ -1051,25 +1054,25 @@ const decisionItems = [
                         <li>
                             <a
                                 href={`tel:${PUBLIC_SITE_PHONE}`}
-                                class="flex items-center gap-2 transition-colors hover:text-white"
+                                class="flex items-center gap-2 underline-offset-2 transition-colors hover:text-surface-50-950 hover:underline focus-visible:text-surface-50-950 focus-visible:underline focus-visible:outline-none"
                             >
-                                <PhoneIcon class="size-3.5" />{formattedPhone}
+                                <PhoneIcon class="size-3.5" aria-hidden="true" />{formattedPhone}
                             </a>
                         </li>
                         <li>
                             <a
                                 href={`mailto:${PUBLIC_BOOKING_EMAIL}`}
-                                class="flex items-center gap-2 transition-colors hover:text-white"
+                                class="flex items-center gap-2 underline-offset-2 transition-colors hover:text-surface-50-950 hover:underline focus-visible:text-surface-50-950 focus-visible:underline focus-visible:outline-none"
                             >
-                                <MailIcon class="size-3.5" />{PUBLIC_BOOKING_EMAIL}
+                                <MailIcon class="size-3.5" aria-hidden="true" />{PUBLIC_BOOKING_EMAIL}
                             </a>
                         </li>
                         <li class="pt-1">
                             <a
                                 href={bookingUrl}
-                                class="inline-flex items-center gap-1.5 rounded-lg bg-primary-500 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-primary-600"
+                                class="inline-flex items-center gap-1.5 rounded-lg bg-primary-500 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-primary-600 focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-950-50 focus-visible:outline-none"
                             >
-                                <CalendarCheckIcon class="size-3.5" />Book a Session
+                                <CalendarCheckIcon class="size-3.5" aria-hidden="true" />Book a Session
                             </a>
                         </li>
                     </ul>
@@ -1078,7 +1081,7 @@ const decisionItems = [
 
             <!-- Disclaimers -->
             <div
-                class="text-surface-500-400 space-y-2 border-t border-surface-800 pt-8 text-xs leading-relaxed"
+                class="text-surface-500-400 space-y-2 border-t border-surface-800-200 pt-8 text-xs leading-relaxed"
             >
                 <p>
                     <strong class="text-primary-500">Disclaimer:</strong> GroundedTutor does not provide
@@ -1096,7 +1099,7 @@ const decisionItems = [
             </div>
 
             <div
-                class="text-surface-500-400 mt-8 border-t border-surface-800 pt-6 text-center text-xs"
+                class="text-surface-500-400 mt-8 border-t border-surface-800-200 pt-6 text-center text-xs"
             >
                 Copyright &copy; {new Date().getFullYear()}
                 {import.meta.env.PUBLIC_SITE_NAME}. All rights reserved.
