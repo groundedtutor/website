@@ -35,7 +35,7 @@ const services = [
     {
         id: "tech-help",
         icon: LaptopIcon,
-        accentClass: "bg-brand-700",
+        accentClass: "bg-primary-700",
         title: "Friendly Tech Help Session",
         remote: "$79",
         inHome: "$129",
@@ -55,7 +55,7 @@ const services = [
     {
         id: "device-setup",
         icon: SmartphoneIcon,
-        accentClass: "bg-brand-500",
+        accentClass: "bg-primary-500",
         title: "New Device Setup",
         remote: "$99",
         inHome: "$149",
@@ -75,7 +75,7 @@ const services = [
     {
         id: "safety",
         icon: ShieldCheckIcon,
-        accentClass: "bg-brand-400",
+        accentClass: "bg-primary-400",
         title: "Online Safety & Scam Protection Review",
         remote: "$119",
         inHome: "$159",
@@ -95,7 +95,7 @@ const services = [
     {
         id: "backup",
         icon: FolderOpenIcon,
-        accentClass: "bg-brand-400",
+        accentClass: "bg-primary-400",
         title: "Photo, File & Backup Organization",
         remote: "$119",
         inHome: "$159",
@@ -171,7 +171,7 @@ const decisionItems = [
     <!-- Skip nav for accessibility -->
     <a
         href="#main-content"
-        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-brand-700 focus:px-4 focus:py-2 focus:text-white"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-primary-700 focus:px-4 focus:py-2 focus:text-white"
     >
         Skip to main content
     </a>
@@ -181,25 +181,25 @@ const decisionItems = [
              HERO
         ───────────────────────────────────────────── -->
         <section
-            class="relative flex min-h-screen items-center overflow-hidden bg-brand-950 pt-16 md:pt-20"
+            class="relative flex min-h-screen items-center overflow-hidden bg-surface-50-950 pt-16 text-surface-950-50 md:pt-20"
         >
             <!-- Ambient glows -->
             <div
-                class="h-md pointer-events-none absolute top-1/3 left-1/4 w-md rounded-full bg-brand-700 opacity-20 blur-3xl"
+                class="h-md pointer-events-none absolute top-1/3 left-1/4 w-md rounded-full bg-primary-700 opacity-20 blur-3xl"
             >
             </div>
             <div
-                class="pointer-events-none absolute right-1/5 bottom-1/4 h-64 w-64 rounded-full bg-brand-400 opacity-10 blur-3xl"
+                class="pointer-events-none absolute right-1/5 bottom-1/4 h-64 w-64 rounded-full bg-primary-400 opacity-10 blur-3xl"
             >
             </div>
 
             <!-- Decorative rings -->
             <div
-                class="pointer-events-none absolute top-24 right-8 h-56 w-56 rounded-full border border-brand-700 opacity-25 md:right-20"
+                class="pointer-events-none absolute top-24 right-8 h-56 w-56 rounded-full border border-primary-700 opacity-25 md:right-20"
             >
             </div>
             <div
-                class="pointer-events-none absolute top-40 right-20 h-32 w-32 rounded-full border border-brand-600 opacity-20 md:right-36"
+                class="pointer-events-none absolute top-40 right-20 h-32 w-32 rounded-full border border-primary-600 opacity-20 md:right-36"
             >
             </div>
 
@@ -207,7 +207,7 @@ const decisionItems = [
                 <div class="max-w-3xl">
                     <!-- Location badge -->
                     <div
-                        class="mb-8 inline-flex reveal items-center gap-2 rounded-full bg-brand-800 px-4 py-1.5 text-sm font-medium text-brand-300"
+                        class="bg-primary-100-800 text-primary-800-100 mb-8 inline-flex reveal items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium"
                     >
                         <MapPinIcon class="size-4 shrink-0" />
                         <span>Serving Montreal &amp; Nearby Areas</span>
@@ -215,15 +215,17 @@ const decisionItems = [
 
                     <!-- Headline -->
                     <h1
-                        class="mb-6 reveal font-serif text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.12] font-bold text-white delay-100"
+                        class="mb-6 reveal font-serif text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.12] font-bold text-surface-950-50 delay-100"
                     >
                         Friendly Tech Help<br />
-                        <span class="text-brand-300">for Older Adults</span><br />
+                        <span class="text-primary-700-300">for Older Adults</span><br />
                         in Montreal
                     </h1>
 
                     <!-- Subheadline -->
-                    <p class="mb-10 max-w-xl reveal text-xl leading-relaxed text-brand-200 delay-200">
+                    <p
+                        class="mb-10 max-w-xl reveal text-xl leading-relaxed text-surface-700-300 delay-200"
+                    >
                         Patient, plain-English support at home, by phone, or online. No jargon. No
                         rushing. Just friendly help.
                     </p>
@@ -232,14 +234,14 @@ const decisionItems = [
                     <div class="mb-14 flex reveal flex-col gap-4 delay-300 sm:mb-16 sm:flex-row">
                         <a
                             href={bookingUrl}
-                            class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 px-7 py-4 text-lg font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-950 focus-visible:outline-none"
+                            class="btn gap-2 preset-filled-primary-500 px-7 py-5 font-semibold btn-lg focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-50-950 focus-visible:outline-none"
                         >
                             <CalendarCheckIcon class="size-5" />
                             Book a Tech Help Session
                         </a>
                         <a
                             href="#decision-helper"
-                            class="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-brand-500 px-7 py-4 text-lg font-medium text-brand-100 transition-all hover:border-brand-400 hover:bg-brand-800 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-950 focus-visible:outline-none"
+                            class="btn gap-2 preset-outlined-primary-500 px-7 py-5 font-semibold btn-lg focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-50-950 focus-visible:outline-none"
                         >
                             Ask What Service Is Right for Me
                         </a>
@@ -247,22 +249,22 @@ const decisionItems = [
 
                     <!-- Trust badges -->
                     <div
-                        class="flex reveal flex-wrap gap-x-6 gap-y-3 text-sm text-brand-300 delay-400"
+                        class="flex reveal flex-wrap gap-x-6 gap-y-3 text-sm text-surface-700-300 delay-400"
                     >
                         <div class="flex items-center gap-2">
-                            <HouseIcon class="size-4 shrink-0 text-brand-300" />
+                            <HouseIcon class="size-4 shrink-0 text-surface-700-300" />
                             <span>In-Home Visits</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <PhoneIcon class="size-4 shrink-0 text-brand-300" />
+                            <PhoneIcon class="size-4 shrink-0 text-surface-700-300" />
                             <span>Phone Support</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <MonitorIcon class="size-4 shrink-0 text-brand-300" />
+                            <MonitorIcon class="size-4 shrink-0 text-surface-700-300" />
                             <span>Remote Support</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <ShieldCheckIcon class="size-4 shrink-0 text-brand-300" />
+                            <ShieldCheckIcon class="size-4 shrink-0 text-surface-700-300" />
                             <span>Private &amp; Trustworthy</span>
                         </div>
                     </div>
@@ -273,67 +275,74 @@ const decisionItems = [
         <!-- ─────────────────────────────────────────────
              WHY CHOOSE US
         ───────────────────────────────────────────── -->
-        <section class="bg-white py-20 md:py-28">
+        <section class="relative overflow-hidden bg-surface-300-700 py-20 md:py-28">
             <div class="mx-auto max-w-6xl px-5 md:px-8">
-                <div class="mb-14 reveal text-center">
+                <div class="mb-14 max-w-3xl reveal">
+                    <p
+                        class="mb-4 text-xs font-semibold tracking-[0.22em] text-primary-300-700 uppercase"
+                    >
+                        Why GroundedTutor
+                    </p>
                     <h2
-                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brand-900"
+                        class="mb-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-surface-950-50"
                     >
                         Tech help that feels different
                     </h2>
-                    <p class="mx-auto max-w-2xl text-lg text-brand-600">
+                    <p class="text-lg leading-relaxed text-surface-700-300">
                         Technology should make life easier, not more stressful. That's why we do
                         things a little differently.
                     </p>
                 </div>
 
-                <div class="grid gap-8 md:grid-cols-3">
-                    <div
-                        class="reveal rounded-2xl bg-brand-50 p-8 text-center transition-colors delay-100 hover:bg-brand-100"
+                <div class="grid gap-6 md:grid-cols-3">
+                    <article
+                        class="group preset-filled-surface-50 reveal card border border-surface-200/70 p-7 shadow-[0_18px_50px_rgba(84,59,35,0.06)] backdrop-blur-sm transition-all delay-100 duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-[0_22px_60px_rgba(84,59,35,0.10)]"
                     >
                         <div
-                            class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-100 text-brand-700"
+                            class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-100 text-primary-700"
                         >
-                            <HeartHandshakeIcon class="size-8" />
+                            <HeartHandshakeIcon class="size-7" />
                         </div>
-                        <h3 class="mb-3 text-xl font-bold text-brand-900">
+                        <h3 class="mb-3 text-xl font-bold text-surface-950-50">
                             Patient &amp; Non-Judgmental
                         </h3>
-                        <p class="leading-relaxed text-brand-600">
+                        <p class="leading-relaxed text-surface-700-300">
                             No rushing. No confusing jargon. We explain everything clearly and kindly,
                             at whatever pace feels comfortable for you.
                         </p>
-                    </div>
+                    </article>
 
-                    <div
-                        class="delay-200r:bg-brand-100 reveal rounded-2xl bg-brand-50 p-8 text-center transition-colors"
+                    <article
+                        class="group preset-filled-surface-50 reveal card border border-surface-200/70 p-7 shadow-[0_18px_50px_rgba(84,59,35,0.06)] backdrop-blur-sm transition-all delay-200 duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-[0_22px_60px_rgba(84,59,35,0.10)]"
                     >
                         <div
-                            class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-100 text-brand-700"
+                            class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-100 text-primary-700"
                         >
-                            <MapPinIcon class="size-8" />
+                            <MapPinIcon class="size-7" />
                         </div>
-                        <h3 class="mb-3 text-xl font-bold text-brand-900">Local to Montreal</h3>
-                        <p class="leading-relaxed text-brand-600">
+                        <h3 class="mb-3 text-xl font-bold text-surface-950-50">Local to Montreal</h3>
+                        <p class="leading-relaxed text-surface-700-300">
                             We come to your home in Montreal and nearby areas, or help you over the
                             phone or online — whichever feels most comfortable for you.
                         </p>
-                    </div>
+                    </article>
 
-                    <div
-                        class="reveal rounded-2xl bg-brand-50 p-8 text-center transition-colors delay-300 hover:bg-brand-100"
+                    <article
+                        class="group preset-filled-surface-50 reveal card border border-surface-200/70 p-7 shadow-[0_18px_50px_rgba(84,59,35,0.06)] backdrop-blur-sm transition-all delay-300 duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-[0_22px_60px_rgba(84,59,35,0.10)]"
                     >
                         <div
-                            class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-100 text-brand-700"
+                            class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-100 text-primary-700"
                         >
-                            <ShieldCheckIcon class="size-8" />
+                            <ShieldCheckIcon class="size-7" />
                         </div>
-                        <h3 class="mb-3 text-xl font-bold text-brand-900">You Stay in Control</h3>
-                        <p class="leading-relaxed text-brand-600">
+                        <h3 class="mb-3 text-xl font-bold text-surface-950-50">
+                            You Stay in Control
+                        </h3>
+                        <p class="leading-relaxed text-surface-700-300">
                             We explain every change before we make it. Your privacy and comfort
                             matter. Nothing happens without your approval.
                         </p>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -341,76 +350,84 @@ const decisionItems = [
         <!-- ─────────────────────────────────────────────
              SERVICES
         ───────────────────────────────────────────── -->
-        <section id="services" class="bg-brand-50 py-20 md:py-28">
+        <section id="services" class="bg-surface-100-900 py-20 md:py-28">
             <div class="mx-auto max-w-6xl px-5 md:px-8">
                 <div class="mb-14 reveal text-center">
-                    <h2
-                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brand-900"
+                    <p
+                        class="mb-4 text-xs font-semibold tracking-[0.22em] text-primary-500 uppercase"
                     >
-                        Our Services
+                        Services
+                    </p>
+                    <h2
+                        class="mb-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-surface-950-50"
+                    >
+                        Support designed around real life
                     </h2>
-                    <p class="mx-auto max-w-2xl text-lg text-brand-600">
+                    <p class="mx-auto max-w-2xl text-lg text-surface-700-300">
                         Choose the service that fits your needs, or <a
                             href="#decision-helper"
-                            class="text-brand-700 underline underline-offset-2 hover:text-brand-900"
+                            class="font-medium text-primary-700-300 underline underline-offset-2 transition-colors hover:text-primary-800-200"
                             >ask us to help you decide</a
                         >.
                     </p>
                 </div>
 
-                <div class="grid gap-7 md:grid-cols-2">
+                <div class="grid gap-6 md:grid-cols-2">
                     {
                         services.map((s, i) => (
-                            <div
+                            <article
                                 id={s.id}
-                                class={`reveal overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm transition-shadow delay-150 hover:shadow-md`}
+                                class={`group reveal overflow-hidden rounded-[1.75rem] border border-surface-300-700 bg-surface-50-950 shadow-[0_24px_80px_rgba(9,18,27,0.08)] transition-all delay-150 duration-300 hover:-translate-y-1 hover:shadow-[0_24px_90px_rgba(9,18,27,0.12)]`}
                             >
                                 <div class={`h-1.5 ${s.accentClass}`} />
                                 <div class="p-7 md:p-8">
-                                    <div class="mb-5 flex items-start gap-4">
-                                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-700">
+                                    <div class="mb-6 flex items-start gap-4">
+                                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-surface-300-700 bg-surface-200-800 text-primary-700-300">
                                             <s.icon class="size-6" />
                                         </div>
                                         <div>
-                                            <h3 class="text-lg leading-snug font-bold text-brand-900 md:text-xl">
+                                            <h3 class="text-xl font-bold text-surface-950-50">
                                                 {s.title}
                                             </h3>
-                                            <p class="mt-1 text-sm font-semibold text-brand-500 md:text-base">
-                                                Starting at {s.remote} remote&nbsp;·&nbsp;{s.inHome}{" "}
-                                                in-home
+                                            <p class="mt-1 text-sm font-semibold text-primary-600-400">
+                                                Starting at {s.remote} remote · {s.inHome} in-home
                                             </p>
                                         </div>
                                     </div>
 
-                                    <p class="mb-5 leading-relaxed text-brand-600">{s.description}</p>
-
-                                    <p class="mb-3 text-xs font-bold tracking-widest text-brand-700 uppercase">
-                                        Examples include:
+                                    <p class="mb-6 leading-relaxed text-surface-700-300">
+                                        {s.description}
                                     </p>
-                                    <ul class="mb-6 space-y-1.5">
-                                        {s.examples.map((ex) => (
-                                            <li class="flex items-start gap-2 text-sm text-brand-600">
-                                                <CircleCheck class="mt-0.5 size-4 shrink-0 text-brand-500" />
-                                                <span>{ex}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
 
-                                    <div class="space-y-3 border-t border-brand-100 pt-5">
+                                    <div class="mb-6 rounded-2xl border border-surface-300-700 bg-surface-100-900 p-4">
+                                        <p class="mb-3 text-xs font-bold tracking-[0.22em] text-primary-700-300 uppercase">
+                                            Examples include:
+                                        </p>
+                                        <ul class="space-y-2">
+                                            {s.examples.map((ex) => (
+                                                <li class="flex items-start gap-2 text-sm leading-relaxed text-surface-700-300">
+                                                    <CircleCheck class="mt-0.5 size-4 shrink-0 text-primary-600-400" />
+                                                    <span>{ex}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    <div class="space-y-4 border-t border-surface-300-700 pt-5">
                                         {s.note && (
-                                            <p class="text-xs leading-relaxed text-brand-400 italic">
+                                            <p class="text-xs leading-relaxed text-surface-600-400 italic">
                                                 {s.note}
                                             </p>
                                         )}
                                         <a
                                             href={bookingUrl}
-                                            class="inline-flex items-center gap-1.5 rounded-lg bg-brand-700 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-800 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 focus-visible:outline-none"
+                                            class="inline-flex items-center gap-2 rounded-xl bg-primary-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-800 focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-50-950 focus-visible:outline-none"
                                         >
                                             Book This Service <ChevronRightIcon class="size-4" />
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         ))
                     }
                 </div>
@@ -420,97 +437,104 @@ const decisionItems = [
         <!-- ─────────────────────────────────────────────
              ONGOING PLANS
         ───────────────────────────────────────────── -->
-        <section id="plans" class="bg-white py-20 md:py-28">
+        <section id="plans" class="bg-surface-50-950 py-20 md:py-28">
             <div class="mx-auto max-w-5xl px-5 md:px-8">
                 <div class="mb-14 reveal text-center">
+                    <p
+                        class="mb-4 text-xs font-semibold tracking-[0.22em] text-primary-600 uppercase"
+                    >
+                        Ongoing support
+                    </p>
                     <h2
-                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brand-900"
+                        class="mb-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-surface-950-50"
                     >
                         Ongoing Support Plans
                     </h2>
-                    <p class="mx-auto max-w-2xl text-lg text-brand-600">
+                    <p class="mx-auto max-w-2xl text-lg text-surface-700-300">
                         For those who want a familiar person to call before small problems become
                         frustrating.
                     </p>
                 </div>
 
-                <div class="grid gap-8 md:grid-cols-2">
-                    <!-- Technology Confidence Plan -->
-                    <div
-                        class="relative reveal overflow-hidden rounded-2xl bg-brand-950 p-8 text-white delay-100"
+                <div class="grid gap-6 md:grid-cols-2">
+                    <article
+                        class="bg-surface-900-50 relative reveal overflow-hidden rounded-[1.9rem] border border-surface-700/80 p-8 text-surface-50 shadow-[0_30px_90px_rgba(15,23,42,0.18)] delay-100"
                     >
                         <div
-                            class="pointer-events-none absolute top-0 right-0 h-40 w-40 translate-x-10 -translate-y-10 rounded-full bg-brand-400 opacity-10"
+                            class="pointer-events-none absolute -top-8 right-0 h-40 w-40 rounded-full bg-primary-400/15 blur-2xl"
                         >
                         </div>
-
-                        <div class="mb-5 flex items-center gap-3">
-                            <div
-                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-400"
-                            >
-                                <StarIcon class="size-5 text-white" />
+                        <div class="relative">
+                            <div class="mb-5 flex items-center gap-3">
+                                <div
+                                    class="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-400/20 text-primary-200"
+                                >
+                                    <StarIcon class="size-5" />
+                                </div>
+                                <span
+                                    class="rounded-full border border-primary-400/30 bg-primary-400/10 px-3 py-1 text-[10px] font-bold tracking-[0.22em] text-primary-200 uppercase"
+                                >
+                                    Most Popular
+                                </span>
                             </div>
-                            <span
-                                class="rounded-full bg-brand-400/20 px-3 py-1 text-xs font-bold tracking-widest text-brand-300 uppercase"
-                                >Most Popular</span
+
+                            <h3 class="mb-3 text-2xl font-bold text-surface-50">
+                                Technology Confidence Plan
+                            </h3>
+                            <div class="mb-6 flex items-end gap-2">
+                                <span class="text-4xl font-bold text-primary-200">$39</span>
+                                <span class="pb-1 text-lg text-surface-300-700">/month</span>
+                            </div>
+                            <p class="mb-6 text-sm text-surface-300-700">or $99 per quarter</p>
+
+                            <ul class="mb-8 space-y-3">
+                                {
+                                    [
+                                        "One scheduled remote or phone session each month (up to 30 min)",
+                                        "Priority booking when available",
+                                        "10% off in-home visits and larger service packages",
+                                        "Friendly reminders for updates, backups & online safety",
+                                    ].map((item) => (
+                                        <li class="flex items-start gap-2.5 text-sm leading-relaxed text-surface-100-900">
+                                            <CircleCheck class="mt-0.5 size-4 shrink-0 text-primary-300" />
+                                            <span>{item}</span>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+
+                            <a
+                                href="#contact"
+                                class="btn block w-full preset-filled-primary-500 px-6 py-3.5 text-center font-semibold focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-950 focus-visible:outline-none"
                             >
+                                Get Started
+                            </a>
                         </div>
+                    </article>
 
-                        <h3 class="mb-2 text-2xl font-bold">Technology Confidence Plan</h3>
-                        <div class="mb-6">
-                            <span class="text-4xl font-bold text-brand-300">$39</span>
-                            <span class="text-lg text-brand-300">/month</span>
-                            <p class="mt-1 text-sm text-brand-400">or $99 per quarter</p>
-                        </div>
-
-                        <ul class="mb-8 space-y-3">
-                            {
-                                [
-                                    "One scheduled remote or phone session each month (up to 30 min)",
-                                    "Priority booking when available",
-                                    "10% off in-home visits and larger service packages",
-                                    "Friendly reminders for updates, backups & online safety",
-                                ].map((item) => (
-                                    <li class="flex items-start gap-2.5 text-sm leading-relaxed text-brand-200">
-                                        <CircleCheck class="mt-0.5 size-5 shrink-0 text-brand-300" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-
-                        <a
-                            href="#contact"
-                            class="block w-full rounded-xl bg-brand-500 px-6 py-3.5 text-center font-semibold text-white transition-colors hover:bg-brand-600 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-950 focus-visible:outline-none"
-                        >
-                            Get Started
-                        </a>
-                    </div>
-
-                    <!-- Backup & Safety Check Plan -->
-                    <div
-                        class="relative reveal rounded-2xl border-2 border-brand-200 bg-brand-50 p-8 delay-200"
+                    <article
+                        class="relative reveal rounded-[1.9rem] border border-surface-200/70 bg-surface-50-950 p-8 shadow-[0_20px_60px_rgba(67,47,23,0.06)] delay-200"
                     >
                         <div class="mb-5 flex items-center gap-3">
                             <div
-                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-700"
+                                class="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-200 text-primary-700"
                             >
                                 <RefreshCwIcon class="size-5" />
                             </div>
                         </div>
 
-                        <h3 class="mb-2 text-2xl font-bold text-brand-900">
+                        <h3 class="mb-3 text-2xl font-bold text-surface-950-50">
                             Backup &amp; Safety Check Plan
                         </h3>
-                        <div class="mb-6">
-                            <span class="text-4xl font-bold text-brand-900">$19</span>
-                            <span class="text-lg text-brand-500">/month</span>
-                            <p class="mt-1 text-sm text-brand-500">
-                                + any third-party software or storage costs
-                            </p>
+                        <div class="mb-6 flex items-end gap-2">
+                            <span class="text-4xl font-bold text-surface-950-50">$19</span>
+                            <span class="pb-1 text-lg text-surface-600-400">/month</span>
                         </div>
+                        <p class="mb-6 text-sm text-surface-600-400">
+                            + any third-party software or storage costs
+                        </p>
 
-                        <ul class="mb-6 space-y-3">
+                        <ul class="mb-7 space-y-3">
                             {
                                 [
                                     "Periodic help checking your backups",
@@ -518,26 +542,26 @@ const decisionItems = [
                                     "Device update checks",
                                     "Basic security settings review",
                                 ].map((item) => (
-                                    <li class="flex items-start gap-2.5 text-sm leading-relaxed text-brand-600">
-                                        <CircleCheck class="mt-0.5 size-5 shrink-0 text-brand-500" />
+                                    <li class="flex items-start gap-2.5 text-sm leading-relaxed text-surface-700-300">
+                                        <CircleCheck class="mt-0.5 size-4 shrink-0 text-primary-500" />
                                         <span>{item}</span>
                                     </li>
                                 ))
                             }
                         </ul>
 
-                        <p class="mb-7 text-xs leading-relaxed text-brand-400 italic">
+                        <p class="mb-7 text-xs leading-relaxed text-surface-600-400 italic">
                             This plan is not continuous security monitoring and does not replace
                             professional cybersecurity services.
                         </p>
 
                         <a
                             href="#contact"
-                            class="block w-full rounded-xl bg-brand-700 px-6 py-3.5 text-center font-semibold text-white transition-colors hover:bg-brand-800 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 focus-visible:outline-none"
+                            class="preset-filled-primary-700 btn block w-full px-6 py-3.5 text-center font-semibold focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2 focus-visible:outline-none"
                         >
                             Get Started
                         </a>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -545,39 +569,45 @@ const decisionItems = [
         <!-- ─────────────────────────────────────────────
              HOW BOOKING WORKS
         ───────────────────────────────────────────── -->
-        <section id="how-it-works" class="bg-brand-100 py-20 md:py-28">
+        <section id="how-it-works" class="bg-surface-100-900 py-20 md:py-28">
             <div class="mx-auto max-w-6xl px-5 md:px-8">
-                <div class="mb-16 reveal text-center">
+                <div class="mb-14 reveal text-center">
+                    <p
+                        class="mb-4 text-xs font-semibold tracking-[0.22em] text-primary-600 uppercase"
+                    >
+                        How it works
+                    </p>
                     <h2
-                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brand-900"
+                        class="mb-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-surface-950-50"
                     >
                         How Booking Works
                     </h2>
-                    <p class="mx-auto max-w-2xl text-lg text-brand-600">
+                    <p class="mx-auto max-w-2xl text-lg text-surface-700-300">
                         Getting help is simple. Here's what to expect from start to finish.
                     </p>
                 </div>
 
-                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+                <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
                     {
                         bookingSteps.map((step, i) => (
-                            <div class:list={["reveal", `delay-${(i + 1) * 100}`]}>
-                                <div class="flex items-start gap-5 lg:flex-col lg:items-center lg:text-center">
-                                    <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-700 text-xl font-bold text-white shadow-sm">
+                            <div
+                                class:list={[
+                                    "preset-filled-surface-50 reveal card border border-surface-200/70 p-5 shadow-[0_18px_50px_rgba(66,47,20,0.05)]",
+                                    `delay-${(i + 1) * 100}`,
+                                ]}
+                            >
+                                <div class="mb-5 flex items-center justify-between">
+                                    <span class="flex h-11 w-11 items-center justify-center rounded-full bg-primary-700 text-lg font-bold text-white">
                                         {step.number}
-                                    </div>
-                                    <div>
-                                        <div class="mb-2 lg:mb-3 lg:flex lg:justify-center">
-                                            <step.icon class="size-5 text-brand-600" />
-                                        </div>
-                                        <h3 class="mb-1.5 text-base font-bold text-brand-900">
-                                            {step.title}
-                                        </h3>
-                                        <p class="text-sm leading-relaxed text-brand-600">
-                                            {step.desc}
-                                        </p>
-                                    </div>
+                                    </span>
+                                    <step.icon class="size-5 text-primary-600" />
                                 </div>
+                                <h3 class="mb-2 text-base font-bold text-surface-950-50">
+                                    {step.title}
+                                </h3>
+                                <p class="text-sm leading-relaxed text-surface-700-300">
+                                    {step.desc}
+                                </p>
                             </div>
                         ))
                     }
@@ -588,37 +618,41 @@ const decisionItems = [
         <!-- ─────────────────────────────────────────────
              REMOTE vs IN-HOME + SERVICE AREA
         ───────────────────────────────────────────── -->
-        <section class="bg-white py-20 md:py-28">
+        <section class="bg-surface-50-950 py-20 md:py-28">
             <div class="mx-auto max-w-6xl px-5 md:px-8">
                 <div class="mb-14 reveal text-center">
+                    <p
+                        class="mb-4 text-xs font-semibold tracking-[0.22em] text-primary-600 uppercase"
+                    >
+                        Flexible support
+                    </p>
                     <h2
-                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brand-900"
+                        class="mb-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-surface-950-50"
                     >
                         Remote or In-Home?
                     </h2>
-                    <p class="mx-auto max-w-2xl text-lg text-brand-600">
-                        We'll help you figure out which works best for your situation. Many issues can
-                        be resolved quickly from the comfort of your home — without anyone needing to
-                        visit.
+                    <p class="mx-auto max-w-2xl text-lg text-surface-700-300">
+                        We'll help you decide which option makes the most sense for your situation.
                     </p>
                 </div>
 
-                <div class="mb-14 grid gap-8 md:grid-cols-2">
-                    <!-- Remote -->
-                    <div class="reveal rounded-2xl border border-brand-100 bg-brand-50 p-8 delay-100">
-                        <div class="mb-6 flex items-center gap-3">
+                <div class="mb-12 grid gap-6 md:grid-cols-2">
+                    <article
+                        class="preset-filled-surface-100 reveal card border border-surface-200/70 p-7 shadow-[0_18px_56px_rgba(84,59,35,0.05)] delay-100"
+                    >
+                        <div class="mb-5 flex items-center gap-3">
                             <div
-                                class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-100 text-brand-700"
+                                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-100 text-primary-700"
                             >
                                 <MonitorIcon class="size-6" />
                             </div>
-                            <h3 class="text-xl font-bold text-brand-900">Remote &amp; Phone</h3>
+                            <h3 class="text-xl font-bold text-surface-950-50">Remote &amp; Phone</h3>
                         </div>
-                        <p class="mb-5 text-sm leading-relaxed text-brand-600">
+                        <p class="mb-5 text-sm leading-relaxed text-surface-700-300">
                             Remote support is a great fit for software questions and everyday guidance
                             — no travel required.
                         </p>
-                        <ul class="space-y-2">
+                        <ul class="space-y-2.5">
                             {
                                 [
                                     "Software issues & settings",
@@ -627,30 +661,31 @@ const decisionItems = [
                                     "Learning to use apps or websites",
                                     "Security reviews & password help",
                                 ].map((item) => (
-                                    <li class="flex items-center gap-2 text-sm text-brand-700">
-                                        <CircleCheck class="size-4 shrink-0 text-brand-500" />
+                                    <li class="flex items-center gap-2 text-sm text-surface-700-300">
+                                        <CircleCheck class="size-4 shrink-0 text-primary-500" />
                                         <span>{item}</span>
                                     </li>
                                 ))
                             }
                         </ul>
-                    </div>
+                    </article>
 
-                    <!-- In-Home -->
-                    <div class="reveal rounded-2xl border border-brand-100 bg-brand-50 p-8 delay-200">
-                        <div class="mb-6 flex items-center gap-3">
+                    <article
+                        class="preset-filled-surface-100 reveal card border border-surface-200/70 p-7 shadow-[0_18px_56px_rgba(84,59,35,0.05)] delay-200"
+                    >
+                        <div class="mb-5 flex items-center gap-3">
                             <div
-                                class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-100 text-brand-700"
+                                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-100 text-primary-700"
                             >
                                 <HouseIcon class="size-6" />
                             </div>
-                            <h3 class="text-xl font-bold text-brand-900">In-Home Visit</h3>
+                            <h3 class="text-xl font-bold text-surface-950-50">In-Home Visit</h3>
                         </div>
-                        <p class="mb-5 text-sm leading-relaxed text-brand-600">
+                        <p class="mb-5 text-sm leading-relaxed text-surface-700-300">
                             Some things are just easier in person. In-home visits are ideal when
                             hands-on help makes a real difference.
                         </p>
-                        <ul class="space-y-2">
+                        <ul class="space-y-2.5">
                             {
                                 [
                                     "Printer setup & troubleshooting",
@@ -659,39 +694,40 @@ const decisionItems = [
                                     "Accessibility setup (larger text, voice, etc.)",
                                     "Hands-on learning at your own pace",
                                 ].map((item) => (
-                                    <li class="flex items-center gap-2 text-sm text-brand-700">
-                                        <CircleCheck class="size-4 shrink-0 text-brand-500" />
+                                    <li class="flex items-center gap-2 text-sm text-surface-700-300">
+                                        <CircleCheck class="size-4 shrink-0 text-primary-500" />
                                         <span>{item}</span>
                                     </li>
                                 ))
                             }
                         </ul>
-                    </div>
+                    </article>
                 </div>
 
-                <!-- Service area note -->
                 <div
-                    class="flex reveal flex-col items-start gap-5 rounded-2xl border border-brand-200 bg-brand-100 p-7 md:flex-row md:items-center"
+                    class="preset-filled-surface-100 reveal card border border-surface-200/70 p-7 shadow-[0_18px_56px_rgba(84,59,35,0.05)] md:flex-row md:items-center"
                 >
-                    <div
-                        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-200 text-brand-500"
-                    >
-                        <MapPinIcon class="size-6" />
-                    </div>
-                    <div>
-                        <h3 class="mb-1 text-lg font-bold text-brand-900">Service Area</h3>
-                        <p class="text-sm leading-relaxed text-brand-700">
-                            <strong>In-home visits:</strong> Montreal and nearby areas. Travel fees may
-                            apply outside the main service area.
-                            <br />
-                            <strong>Remote &amp; phone support:</strong> May be available anywhere in Canada
-                            when suitable for the issue.
-                            <br />
-                            <span class="text-brand-600"
-                                >Some issues may require parts, third-party accounts, manufacturer
-                                support, or a specialist repair shop — we'll let you know.</span
-                            >
-                        </p>
+                    <div class="flex flex-col items-start gap-5 md:flex-row md:items-center">
+                        <div
+                            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary-200 text-primary-700"
+                        >
+                            <MapPinIcon class="size-6" />
+                        </div>
+                        <div>
+                            <h3 class="mb-1 text-lg font-bold text-surface-950-50">Service Area</h3>
+                            <p class="text-sm leading-relaxed text-surface-700-300">
+                                <strong>In-home visits:</strong> Montreal and nearby areas. Travel fees
+                                may apply outside the main service area.
+                                <br />
+                                <strong>Remote &amp; phone support:</strong> May be available anywhere in
+                                Canada when suitable for the issue.
+                                <br />
+                                <span class="text-surface-600-400"
+                                    >Some issues may require parts, third-party accounts, manufacturer
+                                    support, or a specialist repair shop — we'll let you know.</span
+                                >
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -700,26 +736,26 @@ const decisionItems = [
         <!-- ─────────────────────────────────────────────
              TRUST & PRIVACY
         ───────────────────────────────────────────── -->
-        <section class="bg-brand-900 py-20 md:py-28">
+        <section class="bg-surface-900-50 py-20 md:py-28">
             <div class="mx-auto max-w-6xl px-5 md:px-8">
                 <div class="mb-14 reveal text-center">
                     <div
-                        class="mb-5 inline-flex items-center gap-2 text-sm font-medium text-brand-300"
+                        class="mb-5 inline-flex items-center gap-2 rounded-full border border-primary-700/60 bg-primary-800/80 px-3 py-1.5 text-sm font-medium text-primary-200"
                     >
                         <LockIcon class="size-4" />
-                        <span class="tracking-widest uppercase">Privacy &amp; Trust</span>
+                        <span class="tracking-[0.2em] uppercase">Privacy &amp; Trust</span>
                     </div>
                     <h2
-                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-white"
+                        class="mb-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-surface-50"
                     >
                         Your privacy and safety come first
                     </h2>
-                    <p class="mx-auto max-w-2xl text-lg text-brand-300">
+                    <p class="mx-auto max-w-2xl text-lg text-surface-300-700">
                         We want you to feel completely comfortable. Here's our commitment to you.
                     </p>
                 </div>
 
-                <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
                     {
                         [
                             {
@@ -753,18 +789,20 @@ const decisionItems = [
                                 desc: "Personal information collected for booking or service records is handled in accordance with applicable Canadian and Quebec privacy requirements.",
                             },
                         ].map((item, i) => (
-                            <div
+                            <article
                                 class:list={[
-                                    "reveal rounded-2xl bg-brand-800 p-6",
+                                    "preset-filled-surface-800 reveal card border border-surface-700/80 p-6 shadow-[0_18px_56px_rgba(5,10,16,0.18)]",
                                     `delay-${(i + 1) * 100}`,
                                 ]}
                             >
-                                <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-700 text-brand-300">
+                                <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-700 text-primary-200">
                                     <item.icon class="size-5" />
                                 </div>
-                                <h3 class="mb-2 text-base font-bold text-white">{item.title}</h3>
-                                <p class="text-sm leading-relaxed text-brand-300">{item.desc}</p>
-                            </div>
+                                <h3 class="mb-2 text-base font-bold text-surface-50">{item.title}</h3>
+                                <p class="text-sm leading-relaxed text-surface-300-700">
+                                    {item.desc}
+                                </p>
+                            </article>
                         ))
                     }
                 </div>
@@ -774,21 +812,21 @@ const decisionItems = [
         <!-- ─────────────────────────────────────────────
              DECISION HELPER
         ───────────────────────────────────────────── -->
-        <section id="decision-helper" class="bg-brand-50 py-20 md:py-28">
+        <section id="decision-helper" class="bg-surface-100-900 py-20 md:py-28">
             <div class="mx-auto max-w-4xl px-5 md:px-8">
                 <div class="mb-14 reveal text-center">
                     <div
-                        class="mb-5 inline-flex items-center gap-2 text-sm font-medium text-brand-600"
+                        class="mb-5 inline-flex items-center gap-2 rounded-full border border-surface-200/70 bg-surface-50-950 px-3 py-1.5 text-sm font-medium text-primary-700"
                     >
                         <CircleQuestionMarkIcon class="size-4" />
-                        <span class="tracking-widest uppercase">Not Sure What to Book?</span>
+                        <span class="tracking-[0.2em] uppercase">Not Sure What to Book?</span>
                     </div>
                     <h2
-                        class="mb-4 font-serif text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold text-brand-900"
+                        class="mb-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-surface-950-50"
                     >
                         We'll help you figure it out
                     </h2>
-                    <p class="text-lg text-brand-600">
+                    <p class="text-lg text-surface-700-300">
                         Tell us what sounds most like your situation and we'll point you in the right
                         direction.
                     </p>
@@ -800,32 +838,36 @@ const decisionItems = [
                             <a
                                 href={item.anchor}
                                 class:list={[
-                                    "group flex reveal items-center justify-between gap-4 rounded-xl border border-brand-200 bg-white px-6 py-5 transition-all hover:border-brand-400 hover:bg-brand-50",
+                                    "group flex reveal items-center justify-between gap-4 rounded-3xl border border-surface-200/70 bg-surface-50-950 px-6 py-5 shadow-[0_18px_42px_rgba(84,59,35,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-300 hover:bg-surface-100-900",
                                     `delay-${(i + 1) * 100}`,
                                 ]}
                             >
                                 <div class="flex items-start gap-4">
-                                    <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-100 text-sm font-bold text-brand-700 transition-colors group-hover:bg-brand-200">
+                                    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-700 transition-colors group-hover:bg-primary-200">
                                         {i + 1}
                                     </span>
                                     <div>
-                                        <p class="font-medium text-brand-900">
+                                        <p class="font-medium text-surface-950-50">
                                             &ldquo;{item.quote}&rdquo;
                                         </p>
-                                        <p class="mt-0.5 text-sm text-brand-500">→ {item.service}</p>
+                                        <p class="mt-0.5 text-sm text-surface-600-400">
+                                            → {item.service}
+                                        </p>
                                     </div>
                                 </div>
-                                <ArrowRightIcon class="size-5 shrink-0 text-brand-400 transition-all group-hover:translate-x-1 group-hover:text-brand-700" />
+                                <ArrowRightIcon class="size-5 shrink-0 text-primary-400 transition-all group-hover:translate-x-1 group-hover:text-primary-700" />
                             </a>
                         ))
                     }
                 </div>
 
                 <div class="mt-10 reveal text-center">
-                    <p class="mb-5 text-brand-600">Still not sure? We're happy to help you choose.</p>
+                    <p class="mb-5 text-surface-700-300">
+                        Still not sure? We're happy to help you choose.
+                    </p>
                     <a
                         href="#contact"
-                        class="inline-flex items-center gap-2 rounded-xl bg-brand-700 px-7 py-3.5 font-semibold text-white transition-colors hover:bg-brand-800 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 focus-visible:outline-none"
+                        class="btn inline-flex items-center gap-2 rounded-2xl bg-primary-700 px-7 py-3.5 font-semibold text-white transition-colors hover:bg-primary-800 focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2 focus-visible:outline-none"
                     >
                         Ask Us &amp; We'll Recommend the Right Service
                     </a>
@@ -836,15 +878,15 @@ const decisionItems = [
         <!-- ─────────────────────────────────────────────
              CONTACT / CTA
         ───────────────────────────────────────────── -->
-        <section id="contact" class="bg-brand-800 py-20 md:py-28">
+        <section id="contact" class="bg-surface-900-50 py-20 md:py-28">
             <div class="mx-auto max-w-4xl px-5 text-center md:px-8">
                 <div class="reveal">
                     <h2
-                        class="mb-5 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-white"
+                        class="mb-5 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight font-bold text-surface-50"
                     >
                         Ready for friendly tech help?
                     </h2>
-                    <p class="mx-auto mb-12 max-w-xl text-xl text-brand-200">
+                    <p class="mx-auto mb-12 max-w-xl text-xl text-surface-300-700">
                         No question is too small. No problem is too simple. We're here whenever you
                         need us.
                     </p>
@@ -852,75 +894,75 @@ const decisionItems = [
 
                 <div class="mb-12 grid gap-5 sm:grid-cols-3">
                     <!-- Phone -->
-                    <div class="reveal rounded-2xl bg-brand-700 p-6 text-center delay-100">
+                    <div class="reveal rounded-2xl bg-primary-700 p-6 text-center delay-100">
                         <div
-                            class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-600 text-brand-300"
+                            class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-primary-300"
                         >
                             <PhoneIcon class="size-6" />
                         </div>
                         <p
-                            class="mb-2 text-sm font-semibold tracking-widest text-brand-300 uppercase"
+                            class="mb-2 text-sm font-semibold tracking-widest text-primary-300 uppercase"
                         >
                             Call Us
                         </p>
                         <a
                             href=`tel:${PUBLIC_SITE_PHONE}`
-                            class="text-xl font-bold text-white transition-colors hover:text-brand-300"
+                            class="text-xl font-bold text-white transition-colors hover:text-primary-300"
                         >
                             {formattedPhone}
                         </a>
-                        <p class="mt-1 text-xs text-brand-400">Mon-Friday, 4 pm - 8 pm</p>
-                        <p class="mt-1 text-xs text-brand-400">Sat, 8 am - 8 pm</p>
-                        <p class="mt-1 text-xs text-brand-400">Sun, 1 pm - 6 pm</p>
+                        <p class="mt-1 text-xs text-primary-400">Mon-Friday, 4 pm - 8 pm</p>
+                        <p class="mt-1 text-xs text-primary-400">Sat, 8 am - 8 pm</p>
+                        <p class="mt-1 text-xs text-primary-400">Sun, 1 pm - 6 pm</p>
                     </div>
 
                     <!-- Email -->
-                    <div class="reveal rounded-2xl bg-brand-700 p-6 text-center delay-200">
+                    <div class="reveal rounded-2xl bg-primary-700 p-6 text-center delay-200">
                         <div
-                            class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-600 text-brand-300"
+                            class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-primary-300"
                         >
                             <MailIcon class="size-6" />
                         </div>
                         <p
-                            class="mb-2 text-sm font-semibold tracking-widest text-brand-300 uppercase"
+                            class="mb-2 text-sm font-semibold tracking-widest text-primary-300 uppercase"
                         >
                             Email Us
                         </p>
                         <a
                             href=`mailto:${PUBLIC_BOOKING_EMAIL}`
-                            class="text-base font-semibold break-all text-white transition-colors hover:text-brand-300"
+                            class="text-base font-semibold break-all text-white transition-colors hover:text-primary-300"
                         >
                             {PUBLIC_BOOKING_EMAIL}
                         </a>
-                        <p class="mt-1 text-xs text-brand-400">We reply within one business day</p>
+                        <p class="mt-1 text-xs text-primary-400">We reply within one business day</p>
                     </div>
 
                     <!-- Book Online -->
-                    <div class="reveal rounded-2xl bg-brand-700 p-6 text-center delay-300">
+                    <div class="reveal rounded-2xl bg-primary-700 p-6 text-center delay-300">
                         <div
-                            class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-600 text-brand-300"
+                            class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-primary-300"
                         >
                             <CalendarCheckIcon class="size-6" />
                         </div>
                         <p
-                            class="mb-2 text-sm font-semibold tracking-widest text-brand-300 uppercase"
+                            class="mb-2 text-sm font-semibold tracking-widest text-primary-300 uppercase"
                         >
                             Book Online
                         </p>
                         <a
                             href={bookingUrl}
-                            class="text-base font-semibold text-white transition-colors hover:text-brand-300"
+                            class="text-base font-semibold text-white transition-colors hover:text-primary-300"
                         >
                             Schedule a Session
                         </a>
-                        <p class="mt-1 text-xs text-brand-400">Choose a time that works for you</p>
+                        <p class="mt-1 text-xs text-primary-400">Choose a time that works for you</p>
                     </div>
                 </div>
 
                 <div class="reveal">
                     <a
                         href={bookingUrl}
-                        class="inline-flex items-center gap-2 rounded-2xl bg-brand-500 px-10 py-5 text-xl font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-800 focus-visible:outline-none"
+                        class="inline-flex items-center gap-2 rounded-2xl bg-primary-500 px-10 py-5 text-xl font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-primary-600 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-800 focus-visible:outline-none"
                     >
                         <CalendarCheckIcon class="size-6" />
                         Book a Tech Help Session
@@ -933,15 +975,15 @@ const decisionItems = [
     <!-- ─────────────────────────────────────────────
          FOOTER
     ───────────────────────────────────────────── -->
-    <footer class="bg-brand-950 text-brand-400">
+    <footer class="bg-surface-950-50 text-surface-300-700">
         <div class="mx-auto max-w-6xl px-5 py-14 md:px-8">
             <div class="mb-10 grid gap-10 md:grid-cols-4">
                 <!-- Brand -->
                 <div>
                     <span class="text-lg font-bold text-white">
-                        <span class="text-brand-300">Grounded</span>Tutor
+                        <span class="text-primary-300">Grounded</span>Tutor
                     </span>
-                    <p class="mt-3 text-sm leading-relaxed text-brand-400">
+                    <p class="mt-3 text-sm leading-relaxed text-surface-400-600">
                         Friendly, patient tech help for older adults in Montreal. In-home, by phone,
                         or online.
                     </p>
@@ -949,7 +991,7 @@ const decisionItems = [
 
                 <!-- Quick links -->
                 <div>
-                    <p class="mb-4 text-xs font-bold tracking-widest text-brand-500 uppercase">
+                    <p class="mb-4 text-xs font-bold tracking-widest text-primary-500 uppercase">
                         Services
                     </p>
                     <ul class="space-y-2 text-sm">
@@ -983,7 +1025,7 @@ const decisionItems = [
 
                 <!-- Policies -->
                 <div>
-                    <p class="mb-4 text-xs font-bold tracking-widest text-brand-500 uppercase">
+                    <p class="mb-4 text-xs font-bold tracking-widest text-primary-500 uppercase">
                         Policies
                     </p>
                     <ul class="space-y-2 text-sm">
@@ -1002,7 +1044,7 @@ const decisionItems = [
 
                 <!-- Contact -->
                 <div>
-                    <p class="mb-4 text-xs font-bold tracking-widest text-brand-500 uppercase">
+                    <p class="mb-4 text-xs font-bold tracking-widest text-primary-500 uppercase">
                         Contact
                     </p>
                     <ul class="space-y-2 text-sm">
@@ -1025,7 +1067,7 @@ const decisionItems = [
                         <li class="pt-1">
                             <a
                                 href={bookingUrl}
-                                class="inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-brand-600"
+                                class="inline-flex items-center gap-1.5 rounded-lg bg-primary-500 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-primary-600"
                             >
                                 <CalendarCheckIcon class="size-3.5" />Book a Session
                             </a>
@@ -1036,16 +1078,16 @@ const decisionItems = [
 
             <!-- Disclaimers -->
             <div
-                class="space-y-2 border-t border-brand-800 pt-8 text-xs leading-relaxed text-brand-600"
+                class="text-surface-500-400 space-y-2 border-t border-surface-800 pt-8 text-xs leading-relaxed"
             >
                 <p>
-                    <strong class="text-brand-500">Disclaimer:</strong> GroundedTutor does not provide financial,
-                    legal, medical, or investment advice. Scam protection and security reviews reduce risk
-                    but cannot guarantee complete protection from scams, fraud, or malware. Backup and file
-                    transfer services cannot guarantee that every file can be recovered or preserved. Customers
-                    must provide access to accounts, passwords, unlock codes, and third-party subscriptions
-                    where needed. Results depend on device condition, account access, storage availability,
-                    and third-party services.
+                    <strong class="text-primary-500">Disclaimer:</strong> GroundedTutor does not provide
+                    financial, legal, medical, or investment advice. Scam protection and security reviews
+                    reduce risk but cannot guarantee complete protection from scams, fraud, or malware.
+                    Backup and file transfer services cannot guarantee that every file can be recovered
+                    or preserved. Customers must provide access to accounts, passwords, unlock codes, and
+                    third-party subscriptions where needed. Results depend on device condition, account
+                    access, storage availability, and third-party services.
                 </p>
                 <p>
                     Personal information collected for booking or service records is handled in
@@ -1053,7 +1095,9 @@ const decisionItems = [
                 </p>
             </div>
 
-            <div class="mt-8 border-t border-brand-800 pt-6 text-center text-xs text-brand-600">
+            <div
+                class="text-surface-500-400 mt-8 border-t border-surface-800 pt-6 text-center text-xs"
+            >
                 Copyright &copy; {new Date().getFullYear()}
                 {import.meta.env.PUBLIC_SITE_NAME}. All rights reserved.
             </div>

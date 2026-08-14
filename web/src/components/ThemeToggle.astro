@@ -12,26 +12,22 @@ const { classNames } = Astro.props;
     @reference "../styles/global.css";
 
     .theme-option[data-active="true"] {
-        @apply bg-brand-700 text-white shadow-sm;
+        @apply preset-filled-primary-500;
     }
 
     .theme-option[data-active="false"] {
-        @apply text-brand-700 hover:text-brand-900;
+        @apply preset-tonal-surface text-surface-700-300;
     }
 </style>
 
 <div class:list={["flex items-center gap-2", classNames]} aria-label="Accessibility options">
     <span class="sr-only">Accessibility options</span>
-    <div
-        class="inline-flex items-center gap-1 rounded-lg border border-brand-200 bg-brand-100/60 p-1"
-        role="group"
-        aria-label="Theme mode"
-    >
+    <div class="btn-group gap-1 preset-tonal-surface p-1" role="group" aria-label="Theme mode">
         <button
             type="button"
             data-theme-mode="light"
             data-active="false"
-            class="theme-option inline-flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+            class="theme-option btn font-semibold btn-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-50-950 focus-visible:outline-none"
             aria-label="Use light theme"
             aria-pressed="false"
         >
@@ -42,7 +38,7 @@ const { classNames } = Astro.props;
             type="button"
             data-theme-mode="dark"
             data-active="false"
-            class="theme-option inline-flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+            class="theme-option btn font-semibold btn-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-50-950 focus-visible:outline-none"
             aria-label="Use dark theme"
             aria-pressed="false"
         >
@@ -53,7 +49,7 @@ const { classNames } = Astro.props;
             type="button"
             data-theme-mode="auto"
             data-active="false"
-            class="theme-option inline-flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+            class="theme-option btn font-semibold btn-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-50-950 focus-visible:outline-none"
             aria-label="Use automatic system theme"
             aria-pressed="false"
         >

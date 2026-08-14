@@ -1,5 +1,5 @@
 ---
-import { CalendarCheckIcon, MonitorIcon, MoonIcon, SunIcon } from "@lucide/astro";
+import { CalendarCheckIcon } from "@lucide/astro";
 import ThemeToggle from "@components/ThemeToggle.astro";
 
 export interface Props {
@@ -16,7 +16,7 @@ const { bookingUrl = import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING } = Astro.prop
     @reference "../styles/global.css";
     /* ── Sticky nav state ── */
     #site-nav.nav-scrolled {
-        @apply bg-brand-50/95 shadow shadow-brand-950/10 backdrop-blur;
+        @apply border-b border-surface-700-300/30 bg-surface-950-50/92 text-surface-50-950 shadow shadow-surface-950/25 backdrop-blur;
     }
 
     #site-nav.nav-hidden {
@@ -26,14 +26,18 @@ const { bookingUrl = import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING } = Astro.prop
 
 <header
     id="site-nav"
-    class="fixed top-0 right-0 left-0 z-40 transition-[background-color,box-shadow,transform,translate] duration-300 ease-in-out"
+    class="group/site-nav fixed top-0 right-0 left-0 z-40 transition-[background-color,box-shadow,transform,translate] duration-300 ease-in-out"
 >
     <div class="mx-auto max-w-7xl px-5 md:px-8">
         <nav class="flex h-16 items-center justify-between md:h-20" aria-label="Main navigation">
             <!-- Logo -->
             <a href="/" class="shrink-0" aria-label="GroundedTutor — Home">
                 <span class="text-lg font-bold tracking-tight md:text-xl">
-                    <span class="text-brand-700">Grounded</span><span class="text-brand-950"
+                    <span
+                        class="text-primary-700-300 group-[.nav-scrolled]/site-nav:text-primary-300-700"
+                        >Grounded</span
+                    ><span
+                        class="text-surface-950-50 group-[.nav-scrolled]/site-nav:text-surface-50-950"
                         >Tutor</span
                     >
                 </span>
@@ -41,22 +45,26 @@ const { bookingUrl = import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING } = Astro.prop
 
             <!-- Desktop links -->
             <ul
-                class="hidden items-center gap-7 text-sm font-medium text-brand-700 md:flex"
+                class="hidden items-center gap-7 text-sm font-medium text-surface-700-300 group-[.nav-scrolled]/site-nav:text-surface-300-700 md:flex"
                 role="list"
             >
                 <li>
-                    <a href="/#services" class="transition-colors hover:text-brand-950">Services</a>
+                    <a href="/#services" class="transition-colors hover:text-primary-300-700"
+                        >Services</a
+                    >
                 </li>
                 <li>
-                    <a href="/#plans" class="transition-colors hover:text-brand-950">Plans</a>
+                    <a href="/#plans" class="transition-colors hover:text-primary-300-700">Plans</a>
                 </li>
                 <li>
-                    <a href="/#how-it-works" class="transition-colors hover:text-brand-950"
+                    <a href="/#how-it-works" class="transition-colors hover:text-primary-300-700"
                         >How It Works</a
                     >
                 </li>
                 <li>
-                    <a href="/#contact" class="transition-colors hover:text-brand-950">Contact</a>
+                    <a href="/#contact" class="transition-colors hover:text-primary-300-700"
+                        >Contact</a
+                    >
                 </li>
             </ul>
 
@@ -66,7 +74,7 @@ const { bookingUrl = import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING } = Astro.prop
             <a
                 href={bookingUrl}
                 role="button"
-                class="bg-brown-700 hover:bg-brown-800 focus-visible:ring-brown-700 hidden items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none md:inline-flex"
+                class="btn hidden preset-filled-primary-500 px-3 py-4 font-semibold btn-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-50-950 focus-visible:outline-none md:inline-flex"
             >
                 <CalendarCheckIcon class="size-4" />
                 Book a Session
@@ -78,7 +86,7 @@ const { bookingUrl = import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING } = Astro.prop
 
                 <button
                     id="mobile-menu-btn"
-                    class="rounded p-2 text-brand-700 hover:text-brand-900 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 focus-visible:outline-none"
+                    class="btn-icon preset-tonal-surface text-surface-700-300 btn-icon-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-50-950 focus-visible:outline-none"
                     aria-expanded="false"
                     aria-controls="mobile-menu"
                     aria-label="Open navigation menu"
@@ -94,35 +102,35 @@ const { bookingUrl = import.meta.env.PUBLIC_BOOK_PAIR_PROGRAMMING } = Astro.prop
     <!-- Mobile menu panel -->
     <div
         id="mobile-menu"
-        class="hidden border-t border-brand-200 bg-brand-50 shadow-lg md:hidden"
+        class="hidden border-t border-surface-200-800 bg-surface-50-950 shadow-lg md:hidden"
         role="dialog"
         aria-label="Mobile navigation"
     >
         <div class="mx-auto max-w-7xl space-y-1 px-5 py-5">
             <a
                 href="/#services"
-                class="block rounded-lg px-4 py-3 font-medium text-brand-800 transition-colors hover:bg-brand-100"
+                class="btn block w-full justify-start preset-tonal-surface font-medium text-surface-800-200 btn-base"
                 >Services</a
             >
             <a
                 href="/#plans"
-                class="block rounded-lg px-4 py-3 font-medium text-brand-800 transition-colors hover:bg-brand-100"
+                class="btn block w-full justify-start preset-tonal-surface font-medium text-surface-800-200 btn-base"
                 >Plans</a
             >
             <a
                 href="/#how-it-works"
-                class="block rounded-lg px-4 py-3 font-medium text-brand-800 transition-colors hover:bg-brand-100"
+                class="btn block w-full justify-start preset-tonal-surface font-medium text-surface-800-200 btn-base"
                 >How It Works</a
             >
             <a
                 href="/#contact"
-                class="block rounded-lg px-4 py-3 font-medium text-brand-800 transition-colors hover:bg-brand-100"
+                class="btn block w-full justify-start preset-tonal-surface font-medium text-surface-800-200 btn-base"
                 >Contact</a
             >
             <div class="pt-3 pb-1">
                 <a
                     href={bookingUrl}
-                    class="block w-full rounded-xl bg-brand-500 px-5 py-3.5 text-center font-semibold text-white transition-colors hover:bg-brand-600 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+                    class="btn block w-full preset-filled-primary-500 font-semibold btn-base focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-50-950 focus-visible:outline-none"
                     >Book a Session</a
                 >
             </div>

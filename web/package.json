@@ -17,6 +17,7 @@
         "@groundedtutor/ui": "workspace:*",
         "@iconify-json/simple-icons": "^1.2.90",
         "@lucide/astro": "^1.25.0",
+        "@skeletonlabs/skeleton": "^5.0.0",
         "@tailwindcss/vite": "^4.3.3",
         "astro": "^7.1.1",
         "astro-icon": "^1.1.5",
